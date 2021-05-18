@@ -7,8 +7,8 @@ package Controller;
 
 /**
  *
- * @author Bui Quoc Anh
+ * @author trant
  */
-public class QuanlychisodienController {
+public class KhachHangController {
     
 }
