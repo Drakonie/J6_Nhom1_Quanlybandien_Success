@@ -5,6 +5,10 @@
  */
 package ConnectDB;
 
+/**
+ *
+ * @author Admin
+ */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,7 +21,7 @@ import javax.swing.JOptionPane;
  *
  * @author 
  */
-public class Connect {
+public class DatabaseQLKH {
     Connection con=null;    //khoi tao Connection bang null
     Statement sta=null;     //khoi tao Statement de thuc thi
     ResultSet res=null;     //khoi tao ResultSet de chua du lieu
@@ -32,7 +36,7 @@ public class Connect {
             String pass="1234";
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             con=(Connection)DriverManager.getConnection(url, user, pass);
-            JOptionPane.showMessageDialog(null,"Ket noi thanh cong");
+//            JOptionPane.showMessageDialog(null,"Ket noi thanh cong");
         }
         catch (ClassNotFoundException|SQLException e)
         {
@@ -86,7 +90,7 @@ public class Connect {
     {
         ResultSet kq=null;
         Statement st=con.createStatement();
-        kq=st.executeQuery("select * from HCN");
+        kq=st.executeQuery("select * from KHACHHANG");
         return kq;
     }
     public int add(String id, double cd, double cr,double dt) throws Exception 
@@ -137,5 +141,9 @@ public class Connect {
             JOptionPane.showMessageDialog(null, "Loi dong ket noi");
         }
         
+    }
+
+    public Statement createStatement(int TYPE_SCROLL_INSENSITIVE, int CONCUR_UPDATABLE) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

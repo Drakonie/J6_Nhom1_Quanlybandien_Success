@@ -61,17 +61,19 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="txtTenKH_qlkh" pref="185" max="32767" attributes="0"/>
-                                          <Component id="jtxtMaKH_qlkh" max="32767" attributes="0"/>
-                                          <Component id="txtSoCMND__qlkh" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtMaKH_qlkh" max="32767" attributes="0"/>
+                                          <Component id="txtSoCMND_qlkh" alignment="0" max="32767" attributes="0"/>
                                           <Component id="txtDiachi_qlkh" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jtxtNgaySinh_qlkh" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtNgaySinh_qlkh" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -95,19 +97,19 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="txtMatKhau_qlkh" max="32767" attributes="0"/>
-                                              <Component id="jtxtTenDangNhap_qlkh" max="32767" attributes="0"/>
+                                              <Component id="txtTenDangNhap_qlkh" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtNgayDky_qlkh" min="-2" pref="185" max="-2" attributes="0"/>
-                                              <Component id="jComboBox1" min="-2" pref="107" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="txtNgayDky_qlkh" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                          <Component id="txtTinhTrang_qlkh" min="-2" pref="185" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -134,13 +136,11 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jtxtMaKH_qlkh" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtMaKH_qlkh" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtSoCMND__qlkh" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtSoCMND_qlkh" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -153,7 +153,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jtxtNgaySinh_qlkh" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtNgaySinh_qlkh" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="txtMatKhau_qlkh" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -168,9 +168,10 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtNgayDky_qlkh" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtTenKH_qlkh" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnSuaKH_qlkh" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNgayDky_qlkh" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
@@ -180,13 +181,13 @@
                                       <Component id="btnXoaKh_qlkh" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtTinhTrang_qlkh" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jtxtTenDangNhap_qlkh" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtTenDangNhap_qlkh" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -212,7 +213,7 @@
                 <Property name="text" type="java.lang.String" value="M&#xe3; KH:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtxtMaKH_qlkh">
+            <Component class="javax.swing.JTextField" name="txtMaKH_qlkh">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -226,7 +227,7 @@
                 <Property name="text" type="java.lang.String" value="S&#x1ed1; CMND:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtSoCMND__qlkh">
+            <Component class="javax.swing.JTextField" name="txtSoCMND_qlkh">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
@@ -242,7 +243,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtSoDienThoai_qlkh">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNgayDky_qlkh">
+            <Component class="javax.swing.JTextField" name="txtTinhTrang_qlkh">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
@@ -259,9 +260,9 @@
                 <Property name="text" type="java.lang.String" value="T&#xea;n &#x111;&#x103;ng nh&#x1ead;p:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtxtTenDangNhap_qlkh">
+            <Component class="javax.swing.JTextField" name="txtTenDangNhap_qlkh">
             </Component>
-            <Component class="javax.swing.JTextField" name="jtxtNgaySinh_qlkh">
+            <Component class="javax.swing.JTextField" name="txtNgaySinh_qlkh">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
@@ -316,23 +317,13 @@
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableQuanLyKHMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
+            <Component class="javax.swing.JTextField" name="txtNgayDky_qlkh">
             </Component>
           </SubComponents>
         </Container>

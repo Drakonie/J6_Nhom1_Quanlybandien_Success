@@ -10,5 +10,16 @@ package Controller;
  * @author Admin
  */
 public class QuanLyKhachHangController {
+    public void them(){
+        
+    }
+    public void tim(){
+        
+    }
+    public void sua(){
+        
+    }
+    public void xoa(){
     
+    }
 }

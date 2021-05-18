@@ -42,6 +42,10 @@ public class KhachHang extends NguoiDung{
         return trangThai;
     }
 
+    public int getTrangThai() {
+        return trangThai;
+    }
+
     public void setMaKH(String maKH) {
         this.maKH = maKH;
     }
@@ -55,6 +59,10 @@ public class KhachHang extends NguoiDung{
     }
 
     public void setTrangThaiHD(int trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
     
