@@ -58,7 +58,6 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         txtNgayDky_qlkh = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jtxtTinhTrang_qlkh = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jtxtTenDangNhap_qlkh = new javax.swing.JTextField();
         jtxtNgaySinh_qlkh = new javax.swing.JTextField();
@@ -71,12 +70,12 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         btnTimKh_qlkh = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableQuanLyKH = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtMaKH_qlcsd = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        txtThang_qlcsd = new javax.swing.JTextField();
         jlabel = new javax.swing.JLabel();
         txtNam_qlcsd = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
@@ -87,6 +86,7 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         btnThoat_qlcsd = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableQuanlychisodien = new javax.swing.JTable();
+        jComboBox2 = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
@@ -177,6 +177,8 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableQuanLyKH);
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -226,9 +228,9 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
                                         .addComponent(jLabel7)
                                         .addComponent(jLabel8))
                                     .addGap(26, 26, 26)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtNgayDky_qlkh, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                                        .addComponent(jtxtTinhTrang_qlkh)))))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtNgayDky_qlkh, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(66, 66, 66)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnThemKH_qlkh, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
@@ -284,10 +286,10 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnXoaKh_qlkh))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jtxtTinhTrang_qlkh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8))
+                                .addGap(13, 13, 13)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jtxtTenDangNhap_qlkh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -329,6 +331,8 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tableQuanlychisodien);
 
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -345,21 +349,21 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel14)
-                                        .addGap(52, 52, 52)
-                                        .addComponent(txtThang_qlcsd, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel13)
                                         .addGap(52, 52, 52)
                                         .addComponent(txtMaKH_qlcsd, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jlabel)
-                                        .addGap(52, 52, 52)
-                                        .addComponent(txtNam_qlcsd, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel16)
                                         .addGap(52, 52, 52)
-                                        .addComponent(txtChisomoi_qlcsd, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtChisomoi_qlcsd, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jlabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addGap(52, 52, 52)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtNam_qlcsd, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(90, 90, 90)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btnThem_qlcsd, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -381,8 +385,8 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(txtThang_qlcsd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSua_qlcsd))
+                    .addComponent(btnSua_qlcsd)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlabel)
@@ -730,6 +734,8 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     private javax.swing.JButton btnXem_qln;
     private javax.swing.JButton btnXoaKh_qlkh;
     private javax.swing.JButton btnXoa_qlmd;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -772,7 +778,6 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     private javax.swing.JTextField jtxtMaKH_qlkh;
     private javax.swing.JTextField jtxtNgaySinh_qlkh;
     private javax.swing.JTextField jtxtTenDangNhap_qlkh;
-    private javax.swing.JTextField jtxtTinhTrang_qlkh;
     private javax.swing.JTable tableNhaCCD;
     private javax.swing.JTable tableQuanLyKH;
     private javax.swing.JTable tableQuanlychisodien;
@@ -795,7 +800,6 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     private javax.swing.JTextField txtSoDienThoai_qlkh;
     private javax.swing.JTextField txtTenKH_qlkh;
     private javax.swing.JTextField txtTenNCC_qlmd;
-    private javax.swing.JTextField txtThang_qlcsd;
     private javax.swing.JTextField txtThang_qln;
     // End of variables declaration//GEN-END:variables
 }

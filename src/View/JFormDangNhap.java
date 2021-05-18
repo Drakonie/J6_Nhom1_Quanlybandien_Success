@@ -5,6 +5,8 @@
  */
 package View;
 
+import ConnectDB.Connect;
+
 /**
  *
  * @author Bui Quoc Anh
@@ -14,8 +16,10 @@ public class JFormDangNhap extends javax.swing.JFrame {
     /**
      * Creates new form JFormDangNhap
      */
+    Connect conn = new Connect();
     public JFormDangNhap() {
         initComponents();
+        conn.getConnect();
     }
 
     /**

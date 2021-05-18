@@ -27,7 +27,7 @@ public class Connect {
     public void getConnect() 
     {
         try{
-            String url="jdbc:derby://localhost:1527/SinhvienDB";
+            String url="jdbc:derby://localhost:1527/Quanlytiendien";
             String user="nhom1";
             String pass="1234";
             Class.forName("org.apache.derby.jdbc.ClientDriver");
