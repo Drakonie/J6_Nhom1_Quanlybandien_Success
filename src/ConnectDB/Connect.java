@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author TONG LE TU VAN
+ * @author 
  */
 public class Connect {
     Connection con=null;    //khoi tao Connection bang null
@@ -27,7 +27,7 @@ public class Connect {
     public void getConnect() 
     {
         try{
-            String url="jdbc:derby://localhost:1527/Quanlytiendien";
+            String url="jdbc:derby://localhost:1527/QuanLyKhachHang";
             String user="nhom1";
             String pass="1234";
             Class.forName("org.apache.derby.jdbc.ClientDriver");
