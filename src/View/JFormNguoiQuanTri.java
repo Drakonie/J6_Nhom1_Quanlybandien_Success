@@ -1,6 +1,7 @@
 
 package View;
 
+
 import Model.KhachHang;
 import Model.NCC;
 import Model.QuanLyChiSoDien;
@@ -17,12 +18,14 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     ArrayList<NCC> listNCC = new ArrayList<NCC>();
     ArrayList<KhachHang> listKhachhang_No  = new ArrayList<>();
     ArrayList<QuanLyChiSoDien> listQuanLyChiSoDien = new ArrayList<>();
+    
     public JFormNguoiQuanTri() {
         initComponents();
         tableQuanLyKH.setModel(new CustomTable_Quanlykhachhang(listKhachhang));
         tableQuanlychisodien.setModel(new CustomTable_Quanlychisodien(listQuanLyChiSoDien));
         tableNhaCCD.setModel(new CustomTable_Quanlymuadien(listNCC));
         tableQuanlyno.setModel(new CustomTable_Quanlyno(listKhachhang_No));
+        
     }
 
     // function loadtable
