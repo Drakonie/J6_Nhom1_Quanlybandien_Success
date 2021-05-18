@@ -17,9 +17,7 @@ public class JFormKhachHang extends javax.swing.JFrame {
     public JFormKhachHang() {
         initComponents();
     }
-    public String examString(){
-        return "Hello";
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
