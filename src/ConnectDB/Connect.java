@@ -24,8 +24,13 @@ public class Connect {
     
     //ket noi den database
    
-    public void getConnect() 
+    public Connection getCon() 
     {
+        return con;
+        
+    }
+
+    public void getConnect() {
         try{
             String url="jdbc:derby://localhost:1527/QuanLyTienDien";
             String user="nhom1";
@@ -38,7 +43,6 @@ public class Connect {
         {
             JOptionPane.showMessageDialog(null,"Khong the ket noi voi database \n"+e);
         }
-        
     }
     protected  Statement getStatement()throws Exception
     {
@@ -82,11 +86,11 @@ public class Connect {
         return ketqua;
     }
     
-    public ResultSet GetData(String jtable) throws SQLException
+    public ResultSet GetData(String sql) throws SQLException
     {
         ResultSet kq=null;
         Statement st=con.createStatement();
-        kq=st.executeQuery("select * from HCN");
+        kq=st.executeQuery(sql);
         return kq;
     }
     public int add(String id, double cd, double cr,double dt) throws Exception 
