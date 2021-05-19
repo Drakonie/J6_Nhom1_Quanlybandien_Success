@@ -105,7 +105,7 @@
                               <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="141" max="32767" attributes="0"/>
+                      <EmptySpace pref="135" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
@@ -198,7 +198,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Tr&#x1ea1;ng th&#xe1;i"/>
+                <Property name="text" type="java.lang.String" value="Thanh to&#xe1;n"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblMakh_ttkh">

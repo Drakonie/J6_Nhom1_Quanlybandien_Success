@@ -4,6 +4,7 @@ package SetTable;
 
 
 
+
 import Model.NCC;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
@@ -28,9 +29,9 @@ import javax.swing.table.AbstractTableModel;
 public class CustomTable_Quanlymuadien extends AbstractTableModel
 {
     //Khai báo xâu chứa tiêu đề của bảng.
-    private String name[]={"Mã NCC","Tên NCC","Địa chỉ NCC"};
+    private String name[]={"Mã NCC","Tên NCC","Địa chỉ NCC", "Giá bán 1kWh"};
     //Khai báo lớp Chứa kiểu dữ liệu của từng trường tương ứng.
-    private Class classes[]={String.class,String.class,String.class};
+    private Class classes[]={String.class,String.class,String.class, float.class};
     //Tạo một đối tượng arrayList có tên listThiSinh.
     ArrayList<NCC> ds=new ArrayList<NCC>();
 
@@ -63,9 +64,9 @@ public class CustomTable_Quanlymuadien extends AbstractTableModel
             //Cột b
             case 1: return ds.get(rowIndex).getTenNCC();
             //cột c
-            case 2: return ds.get(rowIndex).getDiaChi();
+            case 2: return ds.get(rowIndex).getDiaChiNCC();
             //cột kq
-
+            case 3: return ds.get(rowIndex).getGiaBan();
             
             default :return null;
         }

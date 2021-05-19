@@ -2,8 +2,7 @@ package SetTable;
 
 
 
-
-import Model.KhachHang;
+import Model.NguoiDung;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 //import PhongThi_ThiSinh.ThiSinh;
@@ -31,10 +30,10 @@ public class CustomTable_Quanlyno extends AbstractTableModel
     //Khai báo lớp Chứa kiểu dữ liệu của từng trường tương ứng.
     private Class classes[]={String.class,String.class,Integer.class,Integer.class};
     //Tạo một đối tượng arrayList có tên listThiSinh.
-    ArrayList<KhachHang> ds=new ArrayList<KhachHang>();
+    ArrayList<NguoiDung> ds=new ArrayList<>();
 
     //phương thức khởi tạo cho class có tham số truyền vào.
-    public CustomTable_Quanlyno(ArrayList<KhachHang> listPTB2)
+    public CustomTable_Quanlyno(ArrayList<NguoiDung> listPTB2)
     {
        this.ds=listPTB2;
     }
@@ -58,13 +57,13 @@ public class CustomTable_Quanlyno extends AbstractTableModel
         switch(columnIndex)
         {
             //Cột số a
-            case 0: return ds.get(rowIndex).getMaKH();
+            case 0: return ds.get(rowIndex).getMaNguoiDung();
             //Cột b
             case 1: return ds.get(rowIndex).getHoTen();
             //cột c
             case 2: return ds.get(rowIndex).getDiaChi();
             //cột kq
-            case 3: return ds.get(rowIndex).getTrangThaiHD();
+            case 3: return ds.get(rowIndex).getThanhToan();
             
             
             default :return null;

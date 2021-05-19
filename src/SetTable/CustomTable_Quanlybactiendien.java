@@ -2,8 +2,8 @@ package SetTable;
 
 
 
-import Model.KhachHang;
-import Model.QuanLyChiSoDien;
+
+import Model.BacTienDien;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 //import PhongThi_ThiSinh.ThiSinh;
@@ -27,14 +27,14 @@ import javax.swing.table.AbstractTableModel;
 public class CustomTable_Quanlybactiendien extends AbstractTableModel
 {
     //Khai báo xâu chứa tiêu đề của bảng.
-    private String name[]={"Mã KH","Tháng-Năm","Chỉ số cũ","Chỉ số mới", "Lượng điện tiêu thụ"};
+    private String name[]={"Đối tượng DC","Số điện tối thiểu","Số điện tối đa","Giá bán"};
     //Khai báo lớp Chứa kiểu dữ liệu của từng trường tương ứng.
-    private Class classes[]={String.class,String.class,Integer.class,Integer.class, Integer.class};
+    private Class classes[]={String.class, Integer.class,Integer.class,Float.class};
     //Tạo một đối tượng arrayList có tên listThiSinh.
-    ArrayList<QuanLyChiSoDien> ds=new ArrayList<QuanLyChiSoDien>();
+    ArrayList<BacTienDien> ds=new ArrayList<BacTienDien>();
 
     //phương thức khởi tạo cho class có tham số truyền vào.
-    public CustomTable_Quanlybactiendien(ArrayList<QuanLyChiSoDien> listPTB2)
+    public CustomTable_Quanlybactiendien(ArrayList<BacTienDien> listPTB2)
     {
        this.ds=listPTB2;
     }
@@ -58,15 +58,14 @@ public class CustomTable_Quanlybactiendien extends AbstractTableModel
         switch(columnIndex)
         {
             //Cột số a
-            case 0: return ds.get(rowIndex).getMaKh();
+            case 0: return ds.get(rowIndex).getDoiTuong();
             //Cột b
-            case 1: return ds.get(rowIndex).getThangTinhTien();
+            case 1: return ds.get(rowIndex).getSoDienToiThieu();
             //cột c
-            case 2: return ds.get(rowIndex).getSoDienCu();
+            case 2: return ds.get(rowIndex).getSoDienToiDa();
             //cột kq
-            case 3: return ds.get(rowIndex).getSoDienMoi();
+            case 3: return ds.get(rowIndex).getGiaBan();
             
-            case 4: return ds.get(rowIndex).getLuongdientieuthu();
             
             default :return null;
         }

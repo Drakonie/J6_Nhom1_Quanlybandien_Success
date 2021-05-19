@@ -2,7 +2,8 @@ package SetTable;
 
 
 
-import Model.KhachHang;
+
+import Model.NguoiDung;
 import Model.QuanLyChiSoDien;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
@@ -27,14 +28,14 @@ import javax.swing.table.AbstractTableModel;
 public class CustomTable_Quanlychisodien extends AbstractTableModel
 {
     //Khai báo xâu chứa tiêu đề của bảng.
-    private String name[]={"Mã KH","Tháng-Năm","Chỉ số cũ","Chỉ số mới", "Lượng điện tiêu thụ"};
+    private String name[]={"Mã KH","Mã tháng","Chỉ số cũ","Chỉ số mới"};
     //Khai báo lớp Chứa kiểu dữ liệu của từng trường tương ứng.
-    private Class classes[]={String.class,String.class,Integer.class,Integer.class, Integer.class};
+    private Class classes[]={String.class,String.class,Integer.class,Integer.class};
     //Tạo một đối tượng arrayList có tên listThiSinh.
-    ArrayList<QuanLyChiSoDien> ds=new ArrayList<QuanLyChiSoDien>();
+    ArrayList<NguoiDung> ds=new ArrayList<NguoiDung>();
 
     //phương thức khởi tạo cho class có tham số truyền vào.
-    public CustomTable_Quanlychisodien(ArrayList<QuanLyChiSoDien> listPTB2)
+    public CustomTable_Quanlychisodien(ArrayList<NguoiDung> listPTB2)
     {
        this.ds=listPTB2;
     }
@@ -58,15 +59,15 @@ public class CustomTable_Quanlychisodien extends AbstractTableModel
         switch(columnIndex)
         {
             //Cột số a
-            case 0: return ds.get(rowIndex).getMaKh();
+            case 0: return ds.get(rowIndex).getMaNguoiDung();
             //Cột b
-            case 1: return ds.get(rowIndex).getThangTinhTien();
+            case 1: return ds.get(rowIndex).getQuanlychisodien().getMaThang();
             //cột c
-            case 2: return ds.get(rowIndex).getSoDienCu();
+            case 2: return ds.get(rowIndex).getQuanlychisodien().getSoDienCu();
             //cột kq
-            case 3: return ds.get(rowIndex).getSoDienMoi();
+            case 3: return ds.get(rowIndex).getQuanlychisodien().getSoDienMoi();
             
-            case 4: return ds.get(rowIndex).getLuongdientieuthu();
+            
             
             default :return null;
         }

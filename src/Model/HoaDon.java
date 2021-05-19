@@ -7,25 +7,34 @@ package Model;
  */
 public class HoaDon {
     private String maHD;
-    private KhachHang kh;
-    private NguoiQuanTri nqt;
-    private QuanLyChiSoDien qlcsd;
-    private NCC ncc;
+    private NguoiDung nguoiDung;
+    
     
     public HoaDon(){
-        maHD = "";
-        kh = new KhachHang();
-        nqt = new NguoiQuanTri();
-        qlcsd = new QuanLyChiSoDien();
-        ncc = new NCC();
+        this.maHD = "";
+        this.nguoiDung = new NguoiDung();
     }
 
-    public HoaDon(String maHD, KhachHang kh, NguoiQuanTri nqt, QuanLyChiSoDien qlcsd, NCC ncc) {
+    public HoaDon(String maHD, NguoiDung nguoiDung) {
         this.maHD = maHD;
-        this.kh = kh;
-        this.nqt = nqt;
-        this.qlcsd = qlcsd;
-        this.ncc = ncc;
+        this.nguoiDung = nguoiDung;
     }
+
+    public String getMaHD() {
+        return maHD;
+    }
+
+    public void setMaHD(String maHD) {
+        this.maHD = maHD;
+    }
+
+    public NguoiDung getNguoiDung() {
+        return nguoiDung;
+    }
+
+    public void setNguoiDung(NguoiDung nguoiDung) {
+        this.nguoiDung = nguoiDung;
+    }
+    
     
 }

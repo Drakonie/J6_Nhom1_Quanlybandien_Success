@@ -52,7 +52,7 @@ public class JFormKhachHang extends javax.swing.JFrame {
         txtMakh_Search = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         btnTraCuu = new javax.swing.JButton();
-        cbbThang_Search = new javax.swing.JComboBox<String>();
+        cbbThang_Search = new javax.swing.JComboBox<>();
         txtNam_Search = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -85,7 +85,7 @@ public class JFormKhachHang extends javax.swing.JFrame {
 
         jLabel8.setText("Loại tài khoản");
 
-        jLabel9.setText("Trạng thái");
+        jLabel9.setText("Thanh toán");
 
         lblMakh_ttkh.setText("jLabel17");
 
@@ -149,7 +149,7 @@ public class JFormKhachHang extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel23)))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,7 +198,7 @@ public class JFormKhachHang extends javax.swing.JFrame {
 
         btnTraCuu.setText("Tra cứu");
 
-        cbbThang_Search.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        cbbThang_Search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
         jLabel17.setText("Năm");
 

@@ -1,17 +1,28 @@
 
 package Model;
 
-
+/**
+ *
+ * @author Bui Quoc Anh
+ */
 public class NCC {
     private String maNCC;
     private String tenNCC;
-    private String diaChi;
+    private String diaChiNCC;
     private float giaBan;
+    
     public NCC(){
         this.maNCC = "";
         this.tenNCC = "";
-        this.diaChi = "";
+        this.diaChiNCC = "";
         this.giaBan = 0;
+    }
+
+    public NCC(String maNCC, String tenNCC, String diaChiNCC, float giaBan) {
+        this.maNCC = maNCC;
+        this.tenNCC = tenNCC;
+        this.diaChiNCC = diaChiNCC;
+        this.giaBan = giaBan;
     }
 
     public String getMaNCC() {
@@ -22,8 +33,8 @@ public class NCC {
         return tenNCC;
     }
 
-    public String getDiaChi() {
-        return diaChi;
+    public String getDiaChiNCC() {
+        return diaChiNCC;
     }
 
     public float getGiaBan() {
@@ -38,12 +49,13 @@ public class NCC {
         this.tenNCC = tenNCC;
     }
 
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
+    public void setDiaChiNCC(String diaChiNCC) {
+        this.diaChiNCC = diaChiNCC;
     }
 
     public void setGiaBan(float giaBan) {
         this.giaBan = giaBan;
     }
+    
     
 }

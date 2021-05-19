@@ -1,103 +1,155 @@
 
 package Model;
 
+
+
+/**
+ *
+ * @author Bui Quoc Anh
+ */
 public class NguoiDung {
-    protected String hoTen;
-    protected String diaChi;
-    protected String ngaySinh;
-    protected String soCMND;
-    protected String soDT;
-    protected String tenTK;
-    protected String matKhau;
-    protected String loaiTK;
+    private String maNguoiDung;
+    private String hoTen;
+    private String soCMT;
+    private String ngaySinh;
+    private String diaChi;
+    private String soDienThoai;
+    private String ngayDangKy;
+    private int thanhToan;
+    private String doiTuong;
+    private String loaiNguoiDung;
+    CongToDien congToDien;
+    TaiKhoan taiKhoan;
+    QuanLyChiSoDien quanlychisodien;
+    
+    
     public NguoiDung(){
+        this.maNguoiDung = "";
         this.hoTen = "";
-        this.diaChi = "";
+        this.soCMT = "";
         this.ngaySinh = "";
-        this.soCMND = "";
-        this.soDT = "";
-        this.tenTK = "";
-        this.matKhau = "";
-        this.loaiTK = "";
+        this.diaChi = "";
+        this.soDienThoai = "";
+        this.ngayDangKy = "";
+        this.thanhToan = 1;
+        this.doiTuong = "";
+        
+        this.congToDien = new CongToDien();
+        this.taiKhoan = new TaiKhoan();
+        this.quanlychisodien = new QuanLyChiSoDien();
     }
 
-    public NguoiDung(String hoTen, String diaChi, String ngaySinh, String soCMND, String soDT, String tenTK, String matKhau, String loaiTK) {
+    public NguoiDung(String maNguoiDung, String hoTen, String soCMT, String ngaySinh, String diaChi, String soDienThoai, String ngayDangKy, int thanhToan, String doiTuong, CongToDien congToDien, TaiKhoan taiKhoan, QuanLyChiSoDien quanlychisodien) {
+        this.maNguoiDung = maNguoiDung;
         this.hoTen = hoTen;
+        this.soCMT = soCMT;
+        this.ngaySinh = "";
         this.diaChi = diaChi;
-        this.ngaySinh = ngaySinh;
-        this.soCMND = soCMND;
-        this.soDT = soDT;
-        this.tenTK = tenTK;
-        this.matKhau = matKhau;
-        this.loaiTK = loaiTK;
+        this.soDienThoai = soDienThoai;
+        this.ngayDangKy = ngayDangKy;
+        this.thanhToan = thanhToan;
+        this.doiTuong = doiTuong;
+        
+        this.congToDien = congToDien;
+        this.taiKhoan = taiKhoan;
+        this.quanlychisodien = quanlychisodien;
+    }
+
+    public String getMaNguoiDung() {
+        return maNguoiDung;
     }
 
     public String getHoTen() {
         return hoTen;
     }
 
-    public String getDiaChi() {
-        return diaChi;
+    public String getSoCMT() {
+        return soCMT;
     }
 
     public String getNgaySinh() {
         return ngaySinh;
     }
 
-    public String getSoCMND() {
-        return soCMND;
+    public String getDiaChi() {
+        return diaChi;
     }
 
-    public String getSoDT() {
-        return soDT;
+    public String getSoDienThoai() {
+        return soDienThoai;
     }
 
-    public String getTenTK() {
-        return tenTK;
+    public String getNgayDangKy() {
+        return ngayDangKy;
     }
 
-    public String getMatKhau() {
-        return matKhau;
+    public int getThanhToan() {
+        return thanhToan;
     }
 
-    public String getLoaiTK() {
-        return loaiTK;
+    public String getDoiTuong() {
+        return doiTuong;
+    }
+    
+    public CongToDien getCongToDien() {
+        return congToDien;
+    }
+
+    public TaiKhoan getTaiKhoan() {
+        return taiKhoan;
+    }
+
+    public QuanLyChiSoDien getQuanlychisodien() {
+        return quanlychisodien;
+    }
+
+    public void setMaNguoiDung(String maNguoiDung) {
+        this.maNguoiDung = maNguoiDung;
     }
 
     public void setHoTen(String hoTen) {
         this.hoTen = hoTen;
     }
 
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
+    public void setSoCMT(String soCMT) {
+        this.soCMT = soCMT;
     }
 
     public void setNgaySinh(String ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
-    public void setSoCMND(String soCMND) {
-        this.soCMND = soCMND;
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
     }
 
-    public void setSoDT(String soDT) {
-        this.soDT = soDT;
+    public void setSoDienThoai(String soDienThoai) {
+        this.soDienThoai = soDienThoai;
     }
 
-    public void setTenTK(String tenTK) {
-        this.tenTK = tenTK;
+    public void setNgayDangKy(String ngayDangKy) {
+        this.ngayDangKy = ngayDangKy;
     }
 
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
+    public void setThanhToan(int thanhToan) {
+        this.thanhToan = thanhToan;
     }
 
-    public void setLoaiTK(String loaiTK) {
-        this.loaiTK = loaiTK;
+    public void setDoiTuong(String doiTuong) {
+        this.doiTuong = doiTuong;
     }
 
 
-    
-    
+    public void setCongToDien(CongToDien congToDien) {
+        this.congToDien = congToDien;
+    }
+
+    public void setTaiKhoan(TaiKhoan taiKhoan) {
+        this.taiKhoan = taiKhoan;
+    }
+
+    public void setQuanlychisodien(QuanLyChiSoDien quanlychisodien) {
+        this.quanlychisodien = quanlychisodien;
+    }
     
 }

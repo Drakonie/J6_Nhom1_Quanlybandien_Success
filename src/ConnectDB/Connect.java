@@ -93,24 +93,13 @@ public class Connect {
         kq=st.executeQuery(sql);
         return kq;
     }
-    public int add(String id, double cd, double cr,double dt) throws Exception 
+    public int executeNonQuery(String sql) throws Exception 
     {
         int t=0;
-        t=getStatement().executeUpdate("insert into HCN values('"+ id+"',"+cd+","+cr+","+dt+") ");
+        t=getStatement().executeUpdate(sql);
         return t;
     }
-    public int update(String id, double cd, double cr) throws Exception
-    {
-        int t;
-        t=getStatement().executeUpdate("update HCN set CHIEUDAI="+cd+",CHIEURONG="+cr+",DIENTICH="+cd*cr+"where ID='"+id+"'");
-        return   t;
-    }
-    public int remove(String id)throws Exception
-    {
-        int t;
-        t= getStatement().executeUpdate("delete from HCN where ID='"+id+"'");
-        return t;
-    }
+
     public void closeConnect() throws SQLException
     {
         //dong tu nho den lon
