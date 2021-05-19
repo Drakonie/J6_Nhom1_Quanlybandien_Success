@@ -21,8 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class JFormNguoiQuanTri extends javax.swing.JFrame {
-    public static ResultSet rs = null;
-    public Statement st;
+    
     ArrayList<NguoiDung> listKhachhang = new ArrayList<>();
     ArrayList<NCC> listNCC = new ArrayList<>();
     ArrayList<NguoiDung> listKhachhang_No = new ArrayList<>();
