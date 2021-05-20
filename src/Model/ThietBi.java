@@ -5,18 +5,18 @@ package Model;
  *
  * @author Bui Quoc Anh
  */
-public class CongToDien {
+public class ThietBi {
     private String maTB;
     private float tinhTrang;
     private String ngayLap;
-    public CongToDien(){
+    public ThietBi(){
         this.maTB = "";
         this.tinhTrang = 100;
         this.ngayLap = "";
                 
     }
 
-    public CongToDien(String maTB, float tinhTrang, String ngayLap) {
+    public ThietBi(String maTB, float tinhTrang, String ngayLap) {
         this.maTB = maTB;
         this.tinhTrang = tinhTrang;
         this.ngayLap = ngayLap;

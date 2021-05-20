@@ -2,9 +2,12 @@
 package View;
 
 
+import Controller.QuanlychisodienController;
+import Model.CustomException;
+import Model.HoaDon;
 import Model.NCC;
 import Model.NguoiDung;
-import Model.QuanLyChiSoDien;
+import Model.Thang;
 import SetTable.CustomTable_Quanlychisodien;
 import SetTable.CustomTable_Quanlykhachhang;
 import SetTable.CustomTable_Quanlymuadien;
@@ -17,22 +20,25 @@ import java.sql.Statement;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
 public class JFormNguoiQuanTri extends javax.swing.JFrame {
     
     ArrayList<NguoiDung> listKhachhang = new ArrayList<>();
+    ArrayList<HoaDon> listHD_qlcsd = new ArrayList<>();
     ArrayList<NCC> listNCC = new ArrayList<>();
     ArrayList<NguoiDung> listKhachhang_No = new ArrayList<>();
-    
+    QuanlychisodienController qlcsdC = new QuanlychisodienController();
     
 
     
     public JFormNguoiQuanTri() {
         initComponents();
         setLocationRelativeTo(null);
-//        tableQuanLyKH.setModel(new CustomTable_Quanlykhachhang(listKhachhang));
+       
+        
        
     }
 
@@ -43,7 +49,7 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
   
     //hết function load dữ liệu vào tableQuanLyKH
     private void loadTableQuanlychisodien(){
-        tableQuanlychisodien.setModel(new CustomTable_Quanlychisodien(listKhachhang));
+        tableQuanlychisodien.setModel(new CustomTable_Quanlychisodien(listHD_qlcsd));
     }
     private  void loadTableNhaCCD(){
         tableNhaCCD.setModel(new CustomTable_Quanlymuadien(listNCC));
@@ -352,6 +358,11 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         jLabel16.setText("Chỉ số mới");
 
         btnThem_qlcsd.setText("Thêm");
+        btnThem_qlcsd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThem_qlcsdActionPerformed(evt);
+            }
+        });
 
         btnSua_qlcsd.setText("Sửa");
 
@@ -910,6 +921,11 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnThem_qlcsdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem_qlcsdActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_btnThem_qlcsdActionPerformed
 
     /**
      * @param args the command line arguments

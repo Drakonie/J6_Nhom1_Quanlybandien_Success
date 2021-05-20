@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Model;
 
 /**
  *
  * @author Bui Quoc Anh
  */
-public class QuanlychisodienController {
-    
+public class CustomException extends Exception {
+    public CustomException(String str){
+        super(str);
+    }
 }

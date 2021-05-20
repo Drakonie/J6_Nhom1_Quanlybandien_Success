@@ -17,10 +17,9 @@ public class NguoiDung {
     private String ngayDangKy;
     private int thanhToan;
     private String doiTuong;
-    private String loaiNguoiDung;
-    CongToDien congToDien;
+    ThietBi thietBi;
     TaiKhoan taiKhoan;
-    QuanLyChiSoDien quanlychisodien;
+    Thang quanlychisodien;
     
     
     public NguoiDung(){
@@ -33,13 +32,13 @@ public class NguoiDung {
         this.ngayDangKy = "";
         this.thanhToan = 1;
         this.doiTuong = "";
-        
-        this.congToDien = new CongToDien();
+        this.thietBi = new ThietBi();
         this.taiKhoan = new TaiKhoan();
-        this.quanlychisodien = new QuanLyChiSoDien();
+        this.quanlychisodien = new Thang();
+        
     }
 
-    public NguoiDung(String maNguoiDung, String hoTen, String soCMT, String ngaySinh, String diaChi, String soDienThoai, String ngayDangKy, int thanhToan, String doiTuong, CongToDien congToDien, TaiKhoan taiKhoan, QuanLyChiSoDien quanlychisodien) {
+    public NguoiDung(String maNguoiDung, String hoTen, String soCMT, String ngaySinh, String diaChi, String soDienThoai, String ngayDangKy, int thanhToan, String doiTuong, ThietBi thietBi, TaiKhoan taiKhoan, Thang quanlychisodien) {
         this.maNguoiDung = maNguoiDung;
         this.hoTen = hoTen;
         this.soCMT = soCMT;
@@ -50,7 +49,7 @@ public class NguoiDung {
         this.thanhToan = thanhToan;
         this.doiTuong = doiTuong;
         
-        this.congToDien = congToDien;
+        this.thietBi = thietBi;
         this.taiKhoan = taiKhoan;
         this.quanlychisodien = quanlychisodien;
     }
@@ -90,16 +89,16 @@ public class NguoiDung {
     public String getDoiTuong() {
         return doiTuong;
     }
-    
-    public CongToDien getCongToDien() {
-        return congToDien;
+
+    public ThietBi getCongToDien() {
+        return thietBi;
     }
 
     public TaiKhoan getTaiKhoan() {
         return taiKhoan;
     }
 
-    public QuanLyChiSoDien getQuanlychisodien() {
+    public Thang getQuanlychisodien() {
         return quanlychisodien;
     }
 
@@ -139,16 +138,15 @@ public class NguoiDung {
         this.doiTuong = doiTuong;
     }
 
-
-    public void setCongToDien(CongToDien congToDien) {
-        this.congToDien = congToDien;
+    public void setCongToDien(ThietBi thietBi) {
+        this.thietBi = thietBi;
     }
 
     public void setTaiKhoan(TaiKhoan taiKhoan) {
         this.taiKhoan = taiKhoan;
     }
 
-    public void setQuanlychisodien(QuanLyChiSoDien quanlychisodien) {
+    public void setQuanlychisodien(Thang quanlychisodien) {
         this.quanlychisodien = quanlychisodien;
     }
     

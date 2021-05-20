@@ -27,9 +27,9 @@ import javax.swing.table.AbstractTableModel;
 public class CustomTable_Quanlykhachhang extends AbstractTableModel
 {
     //Khai báo xâu chứa tiêu đề của bảng.
-    private String name[]={"Mã KH","Họ tên","Số CMND", "Ngày Sinh", "Địa chỉ", "Số ĐT", "Ngày Đky", "Trạng thái thanh toán", "Loại tài khoản", "Tên đăng nhập", "Mật khẩu"};
+    private String name[]={"Mã KH","Họ tên","Số CMND", "Ngày Sinh", "Địa chỉ", "Số ĐT", "Ngày Đky", "Trạng thái thanh toán", "Mục đích sd", "Loại tài khoản", "Tên đăng nhập", "Mật khẩu"};
     //Khai báo lớp Chứa kiểu dữ liệu của từng trường tương ứng.
-    private Class classes[]={String.class,String.class,String.class,String.class, String.class, String.class, String.class, Integer.class, String.class, String.class, String.class};
+    private Class classes[]={String.class,String.class,String.class,String.class, String.class, String.class, String.class, Integer.class, String.class, String.class, String.class, String.class};
     //Tạo một đối tượng arrayList có tên listThiSinh.
     ArrayList<NguoiDung> ds=new ArrayList<NguoiDung>();
 
@@ -70,10 +70,10 @@ public class CustomTable_Quanlykhachhang extends AbstractTableModel
             case 4: return ds.get(rowIndex).getDiaChi();
             case 5: return ds.get(rowIndex).getSoDienThoai();
             case 6: return ds.get(rowIndex).getNgayDangKy();
+            case 7: return ds.get(rowIndex).getDoiTuong();
+            case 8: return ds.get(rowIndex).getThanhToan();
             
-            case 7: return ds.get(rowIndex).getThanhToan();
             
-            case 8: return ds.get(rowIndex).getDoiTuong();
             
             case 9: return ds.get(rowIndex).getTaiKhoan().getUserName();
             case 10: return ds.get(rowIndex).getTaiKhoan().getPassWord();

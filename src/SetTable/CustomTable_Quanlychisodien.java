@@ -3,8 +3,8 @@ package SetTable;
 
 
 
-import Model.NguoiDung;
-import Model.QuanLyChiSoDien;
+import Model.HoaDon;
+import Model.Thang;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 //import PhongThi_ThiSinh.ThiSinh;
@@ -32,10 +32,10 @@ public class CustomTable_Quanlychisodien extends AbstractTableModel
     //Khai báo lớp Chứa kiểu dữ liệu của từng trường tương ứng.
     private Class classes[]={String.class,String.class,Integer.class,Integer.class};
     //Tạo một đối tượng arrayList có tên listThiSinh.
-    ArrayList<NguoiDung> ds=new ArrayList<NguoiDung>();
+    ArrayList<HoaDon> ds=new ArrayList<>();
 
     //phương thức khởi tạo cho class có tham số truyền vào.
-    public CustomTable_Quanlychisodien(ArrayList<NguoiDung> listPTB2)
+    public CustomTable_Quanlychisodien(ArrayList<HoaDon> listPTB2)
     {
        this.ds=listPTB2;
     }
@@ -59,13 +59,13 @@ public class CustomTable_Quanlychisodien extends AbstractTableModel
         switch(columnIndex)
         {
             //Cột số a
-            case 0: return ds.get(rowIndex).getMaNguoiDung();
+            case 0: return ds.get(rowIndex).getNguoiDung().getMaNguoiDung();
             //Cột b
-            case 1: return ds.get(rowIndex).getQuanlychisodien().getMaThang();
+            case 1: return ds.get(rowIndex).getThang().getMaThang();
             //cột c
-            case 2: return ds.get(rowIndex).getQuanlychisodien().getSoDienCu();
+            case 2: return ds.get(rowIndex).getSoDienDau();
             //cột kq
-            case 3: return ds.get(rowIndex).getQuanlychisodien().getSoDienMoi();
+            case 3: return ds.get(rowIndex).getSoDienDau();
             
             
             
