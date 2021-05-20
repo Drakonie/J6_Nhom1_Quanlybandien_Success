@@ -96,7 +96,11 @@ public class Connect {
     public int executeNonQuery(String sql) throws Exception 
     {
         int t=0;
-        t=getStatement().executeUpdate(sql);
+        //use prepare statement
+        PreparedStatement stmt = con.prepareStatement(sql);
+        t = stmt.executeUpdate();
+        
+//        t=getStatement().executeUpdate(sql);
         return t;
     }
 
