@@ -37,7 +37,7 @@ public class Connect {
             String pass="1234";
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             con=(Connection)DriverManager.getConnection(url, user, pass);
-            JOptionPane.showMessageDialog(null,"Ket noi thanh cong");
+//            JOptionPane.showMessageDialog(null,"Ket noi thanh cong");
         }
         catch (ClassNotFoundException|SQLException e)
         {
