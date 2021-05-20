@@ -19,7 +19,7 @@ public class NguoiDung {
     private String doiTuong;
     ThietBi thietBi;
     TaiKhoan taiKhoan;
-    Thang quanlychisodien;
+    
     
     
     public NguoiDung(){
@@ -34,11 +34,11 @@ public class NguoiDung {
         this.doiTuong = "";
         this.thietBi = new ThietBi();
         this.taiKhoan = new TaiKhoan();
-        this.quanlychisodien = new Thang();
+        
         
     }
 
-    public NguoiDung(String maNguoiDung, String hoTen, String soCMT, String ngaySinh, String diaChi, String soDienThoai, String ngayDangKy, int thanhToan, String doiTuong, ThietBi thietBi, TaiKhoan taiKhoan, Thang quanlychisodien) {
+    public NguoiDung(String maNguoiDung, String hoTen, String soCMT, String ngaySinh, String diaChi, String soDienThoai, String ngayDangKy, int thanhToan, String doiTuong, ThietBi thietBi, TaiKhoan taiKhoan) {
         this.maNguoiDung = maNguoiDung;
         this.hoTen = hoTen;
         this.soCMT = soCMT;
@@ -51,7 +51,7 @@ public class NguoiDung {
         
         this.thietBi = thietBi;
         this.taiKhoan = taiKhoan;
-        this.quanlychisodien = quanlychisodien;
+        
     }
 
     public String getMaNguoiDung() {
@@ -98,9 +98,7 @@ public class NguoiDung {
         return taiKhoan;
     }
 
-    public Thang getQuanlychisodien() {
-        return quanlychisodien;
-    }
+
 
     public void setMaNguoiDung(String maNguoiDung) {
         this.maNguoiDung = maNguoiDung;
@@ -146,8 +144,6 @@ public class NguoiDung {
         this.taiKhoan = taiKhoan;
     }
 
-    public void setQuanlychisodien(Thang quanlychisodien) {
-        this.quanlychisodien = quanlychisodien;
-    }
+
     
 }

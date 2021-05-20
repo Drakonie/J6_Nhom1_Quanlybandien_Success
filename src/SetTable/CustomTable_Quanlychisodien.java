@@ -28,9 +28,9 @@ import javax.swing.table.AbstractTableModel;
 public class CustomTable_Quanlychisodien extends AbstractTableModel
 {
     //Khai báo xâu chứa tiêu đề của bảng.
-    private String name[]={"Mã KH","Mã tháng","Chỉ số cũ","Chỉ số mới"};
+    private String name[]={"Mã KH", "Tên khách hàng", "Địa chỉ","Mã tháng","Chỉ số cũ","Chỉ số mới"};
     //Khai báo lớp Chứa kiểu dữ liệu của từng trường tương ứng.
-    private Class classes[]={String.class,String.class,Integer.class,Integer.class};
+    private Class classes[]={String.class, String.class, String.class, String.class,Integer.class,Integer.class};
     //Tạo một đối tượng arrayList có tên listThiSinh.
     ArrayList<HoaDon> ds=new ArrayList<>();
 
@@ -60,12 +60,14 @@ public class CustomTable_Quanlychisodien extends AbstractTableModel
         {
             //Cột số a
             case 0: return ds.get(rowIndex).getNguoiDung().getMaNguoiDung();
+            case 1: return ds.get(rowIndex).getNguoiDung().getHoTen();
+            case 2: return ds.get(rowIndex).getNguoiDung().getDiaChi();
             //Cột b
-            case 1: return ds.get(rowIndex).getThang().getMaThang();
+            case 3: return ds.get(rowIndex).getThang().getMaThang();
             //cột c
-            case 2: return ds.get(rowIndex).getSoDienDau();
+            case 4: return ds.get(rowIndex).getSoDienDau();
             //cột kq
-            case 3: return ds.get(rowIndex).getSoDienDau();
+            case 5: return ds.get(rowIndex).getSoDienDau();
             
             
             
