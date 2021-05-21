@@ -5,6 +5,10 @@
  */
 package ConnectDB;
 
+/**
+ *
+ * @author Admin
+ */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,20 +21,15 @@ import javax.swing.JOptionPane;
  *
  * @author 
  */
-public class Connect {
+public class DatabaseQLKH {
     Connection con=null;    //khoi tao Connection bang null
     Statement sta=null;     //khoi tao Statement de thuc thi
     ResultSet res=null;     //khoi tao ResultSet de chua du lieu
     
     //ket noi den database
    
-    public Connection getCon() 
+    public void getConnect() 
     {
-        return con;
-        
-    }
-
-    public void getConnect() {
         try{
             String url="jdbc:derby://localhost:1527/QuanLyTienDien";
             String user="nhom1";
@@ -43,6 +42,7 @@ public class Connect {
         {
             JOptionPane.showMessageDialog(null,"Khong the ket noi voi database \n"+e);
         }
+        
     }
     protected  Statement getStatement()throws Exception
     {
@@ -86,24 +86,31 @@ public class Connect {
         return ketqua;
     }
     
-    public ResultSet GetData(String sql) throws SQLException
+    public ResultSet GetData(String jtable) throws SQLException
     {
         ResultSet kq=null;
         Statement st=con.createStatement();
-        kq=st.executeQuery(sql);
+        kq=st.executeQuery("select * from KHACHHANG");
         return kq;
     }
-    public int executeNonQuery(String sql) throws Exception 
+    public int add(String id, double cd, double cr,double dt) throws Exception 
     {
         int t=0;
-        //use prepare statement
-        PreparedStatement stmt = con.prepareStatement(sql);
-        t = stmt.executeUpdate();
-        
-//        t=getStatement().executeUpdate(sql);
+        t=getStatement().executeUpdate("insert into HCN values('"+ id+"',"+cd+","+cr+","+dt+") ");
         return t;
     }
-
+    public int update(String id, double cd, double cr) throws Exception
+    {
+        int t;
+        t=getStatement().executeUpdate("update HCN set CHIEUDAI="+cd+",CHIEURONG="+cr+",DIENTICH="+cd*cr+"where ID='"+id+"'");
+        return   t;
+    }
+    public int remove(String id)throws Exception
+    {
+        int t;
+        t= getStatement().executeUpdate("delete from HCN where ID='"+id+"'");
+        return t;
+    }
     public void closeConnect() throws SQLException
     {
         //dong tu nho den lon
@@ -134,5 +141,9 @@ public class Connect {
             JOptionPane.showMessageDialog(null, "Loi dong ket noi");
         }
         
+    }
+
+    public Statement createStatement(int TYPE_SCROLL_INSENSITIVE, int CONCUR_UPDATABLE) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
