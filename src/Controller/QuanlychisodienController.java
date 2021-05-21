@@ -50,4 +50,5 @@ public class QuanlychisodienController {
         String sql = "delete from hoadon where mahd='"+mahd+"'";
         conn.executeNonQuery(sql);
     }
+    
 }

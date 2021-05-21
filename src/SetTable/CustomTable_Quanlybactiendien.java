@@ -27,9 +27,9 @@ import javax.swing.table.AbstractTableModel;
 public class CustomTable_Quanlybactiendien extends AbstractTableModel
 {
     //Khai báo xâu chứa tiêu đề của bảng.
-    private String name[]={"Đối tượng DC","Số điện tối thiểu","Số điện tối đa","Giá bán"};
+    private String name[]={"Mã bậc", "Số điện tối thiểu","Số điện tối đa","Giá bán", "Đối tượng DC"};
     //Khai báo lớp Chứa kiểu dữ liệu của từng trường tương ứng.
-    private Class classes[]={String.class, Integer.class,Integer.class,Float.class};
+    private Class classes[]={String.class, Integer.class,Integer.class,Float.class, String.class};
     //Tạo một đối tượng arrayList có tên listThiSinh.
     ArrayList<BacTienDien> ds=new ArrayList<BacTienDien>();
 
@@ -58,14 +58,14 @@ public class CustomTable_Quanlybactiendien extends AbstractTableModel
         switch(columnIndex)
         {
             //Cột số a
-            case 0: return ds.get(rowIndex).getDoiTuong();
+            case 0: return ds.get(rowIndex).getMaBac();
             //Cột b
             case 1: return ds.get(rowIndex).getSoDienToiThieu();
             //cột c
             case 2: return ds.get(rowIndex).getSoDienToiDa();
             //cột kq
             case 3: return ds.get(rowIndex).getGiaBan();
-            
+            case 4: return ds.get(rowIndex).getDoiTuong();
             
             default :return null;
         }

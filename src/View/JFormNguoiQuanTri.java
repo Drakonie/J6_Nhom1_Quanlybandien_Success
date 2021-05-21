@@ -2,12 +2,15 @@
 package View;
 
 
+import Controller.QuanlybactiendienController;
 import Controller.QuanlychisodienController;
+import Model.BacTienDien;
 import Model.CustomException;
 import Model.HoaDon;
 import Model.NCC;
 import Model.NguoiDung;
 import Model.Thang;
+import SetTable.CustomTable_Quanlybactiendien;
 import SetTable.CustomTable_Quanlychisodien;
 import SetTable.CustomTable_Quanlykhachhang;
 import SetTable.CustomTable_Quanlymuadien;
@@ -30,14 +33,16 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     ArrayList<HoaDon> listHD_qlcsd = new ArrayList<>();
     ArrayList<NCC> listNCC = new ArrayList<>();
     ArrayList<NguoiDung> listKhachhang_No = new ArrayList<>();
+    ArrayList<BacTienDien> listBacTienDien = new ArrayList();
     QuanlychisodienController qlcsdC = new QuanlychisodienController();
-    
+    QuanlybactiendienController qlbtdC = new QuanlybactiendienController();
 
     
     public JFormNguoiQuanTri() {
         initComponents();
         setLocationRelativeTo(null);
         loadTableQuanlychisodien();
+        loadTableQuanlybactiendien();
     }
 
     // function loadtable
@@ -53,7 +58,7 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
             tableQuanlychisodien.setModel(new CustomTable_Quanlychisodien(listHD_qlcsd));
             
         }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+            JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
         }
         
     }
@@ -62,6 +67,14 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     }
     private void loadTableQuanlyno(){
         tableQuanlyno.setModel(new CustomTable_Quanlyno(listKhachhang_No));
+    }
+    private void loadTableQuanlybactiendien(){
+        try{
+            listBacTienDien = qlbtdC.getListBacTienDien();
+            tableDongiabactiendien.setModel(new CustomTable_Quanlybactiendien(listBacTienDien));
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -122,12 +135,10 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         tableQuanlyno = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        txtMathang_dgbtd = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableDongiabactiendien = new javax.swing.JTable();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbbDoituong_qlcsd = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
         txtSodientoithieu_dgbtd = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
@@ -138,6 +149,8 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         btnSua_dgbtd = new javax.swing.JButton();
         btnXoa_dgbtd = new javax.swing.JButton();
         btnTim_dgbtd = new javax.swing.JButton();
+        jLabel36 = new javax.swing.JLabel();
+        txtMabac_qlbtd = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -531,8 +544,6 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         jLabel29.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel29.setText("Đơn giá bậc tiền điện");
 
-        jLabel15.setText("Mã tháng");
-
         jLabel17.setText("Đối tượng");
 
         tableDongiabactiendien.setModel(new javax.swing.table.DefaultTableModel(
@@ -546,9 +557,14 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableDongiabactiendien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableDongiabactiendienMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tableDongiabactiendien);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sinh hoạt", "Kinh doanh" }));
+        cbbDoituong_qlcsd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sinh hoạt", "Kinh doanh" }));
 
         jLabel19.setText("Số điện tối thiểu");
 
@@ -557,52 +573,57 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         jLabel21.setText("Giá bán(VNĐ)");
 
         btnThem_dgbtd.setText("Thêm");
+        btnThem_dgbtd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThem_dgbtdActionPerformed(evt);
+            }
+        });
 
         btnSua_dgbtd.setText("Sửa");
+        btnSua_dgbtd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSua_dgbtdActionPerformed(evt);
+            }
+        });
 
         btnXoa_dgbtd.setText("Xoá");
+        btnXoa_dgbtd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoa_dgbtdActionPerformed(evt);
+            }
+        });
 
         btnTim_dgbtd.setText("Tìm kiếm");
+
+        jLabel36.setText("Mã bậc");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(168, 168, 168)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(304, 304, 304)
-                        .addComponent(jLabel29))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(184, 184, 184)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel15)
-                                        .addGap(18, 18, 18))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel17)
-                                        .addGap(15, 15, 15)))
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jComboBox2, 0, 87, Short.MAX_VALUE)
-                                    .addComponent(txtMathang_dgbtd))
+                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel21)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel36))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel21)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtGiaban_dgbtd, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel19)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtSodientoithieu_dgbtd, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel20)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtSodientoida_dgbtd, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtMabac_qlbtd, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbbDoituong_qlcsd, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtGiaban_dgbtd, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtSodientoida_dgbtd, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtSodientoithieu_dgbtd, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -610,8 +631,9 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
                                             .addComponent(btnThem_dgbtd))
                                         .addGap(18, 18, 18)
                                         .addComponent(btnTim_dgbtd))
-                                    .addComponent(btnXoa_dgbtd, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(451, Short.MAX_VALUE))
+                                    .addComponent(btnXoa_dgbtd, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel29))))
+                .addContainerGap(467, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -621,36 +643,40 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(51, 51, 51)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(txtMathang_dgbtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19)
-                            .addComponent(txtSodientoithieu_dgbtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnThem_dgbtd))
+                        .addComponent(btnThem_dgbtd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel20)
-                            .addComponent(txtSodientoida_dgbtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSua_dgbtd))
+                        .addComponent(btnSua_dgbtd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnXoa_dgbtd)
+                        .addGap(18, 18, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(btnTim_dgbtd, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(91, 91, 91))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel36)
+                                    .addComponent(txtMabac_qlbtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel19)
+                                    .addComponent(txtSodientoithieu_dgbtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel20)
+                                    .addComponent(txtSodientoida_dgbtd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel21)
-                                    .addComponent(txtGiaban_dgbtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnXoa_dgbtd)))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtGiaban_dgbtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel17)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnTim_dgbtd, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)))
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                                    .addComponent(cbbDoituong_qlcsd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)))))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane1.addTab("Quản lý bậc tiền điện", jPanel4);
@@ -1042,15 +1068,87 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
             qlcsdC.xoaHoaDon(txtMaHD_qlcsd.getText());
             loadTableQuanlychisodien();
         }catch(CustomException ex){
-           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
        }
        catch(SQLException ex){
-           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
        }
        catch(Exception ex){
-           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
        }
     }//GEN-LAST:event_btnXoa_qlcsdActionPerformed
+
+    private void btnThem_dgbtdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem_dgbtdActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(txtSodientoithieu_dgbtd.getText().isEmpty() | txtSodientoida_dgbtd.getText().isEmpty() || txtGiaban_dgbtd.getText().isEmpty())
+                throw new CustomException("Bạn cần nhập đủ dữ liệu để có thể thêm bậc tiền điện");
+            qlbtdC.themBacTienDien(txtMabac_qlbtd.getText(), Integer.parseInt(txtSodientoithieu_dgbtd.getText()), Integer.parseInt(txtSodientoida_dgbtd.getText()), Float.parseFloat(txtGiaban_dgbtd.getText()), cbbDoituong_qlcsd.getSelectedItem().toString());
+            loadTableQuanlybactiendien();
+        }catch(CustomException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
+       }
+       catch(SQLException ex){
+           if(ex.getMessage().contains("a unique or primary key constraint")){
+               JOptionPane.showMessageDialog(null, "Mã hoá đơn đã tồn tại");
+           }
+           else{
+               
+                JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
+           }
+       }
+       catch(Exception ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
+       }
+    }//GEN-LAST:event_btnThem_dgbtdActionPerformed
+
+    private void btnXoa_dgbtdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa_dgbtdActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(txtSodientoithieu_dgbtd.getText().isEmpty() | txtSodientoida_dgbtd.getText().isEmpty() || txtGiaban_dgbtd.getText().isEmpty())
+                throw new CustomException("Bạn cần nhập đủ dữ liệu để có thể thêm bậc tiền điện");
+            qlbtdC.xoaBacTienDien(txtMabac_qlbtd.getText(), cbbDoituong_qlcsd.getSelectedItem().toString());
+            
+            loadTableQuanlybactiendien();
+        }catch(CustomException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
+       }
+       catch(SQLException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
+       }
+       catch(Exception ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
+       }
+    }//GEN-LAST:event_btnXoa_dgbtdActionPerformed
+
+    private void btnSua_dgbtdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua_dgbtdActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(txtSodientoithieu_dgbtd.getText().isEmpty() | txtSodientoida_dgbtd.getText().isEmpty() || txtGiaban_dgbtd.getText().isEmpty())
+                throw new CustomException("Bạn cần nhập đủ dữ liệu để có thể thêm bậc tiền điện");
+            qlbtdC.suaBacTienDien(txtMabac_qlbtd.getText(), Integer.parseInt(txtSodientoithieu_dgbtd.getText()), Integer.parseInt(txtSodientoida_dgbtd.getText()), Float.parseFloat(txtGiaban_dgbtd.getText()), cbbDoituong_qlcsd.getSelectedItem().toString());
+            
+            loadTableQuanlybactiendien();
+        }catch(CustomException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
+       }
+       catch(SQLException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
+       }
+       catch(Exception ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
+       }
+    }//GEN-LAST:event_btnSua_dgbtdActionPerformed
+
+    private void tableDongiabactiendienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDongiabactiendienMouseClicked
+        // TODO add your handling code here:
+        int selectedRow = tableDongiabactiendien.getSelectedRow();
+        txtMabac_qlbtd.setText(tableDongiabactiendien.getValueAt(selectedRow, 0).toString());
+        txtSodientoithieu_dgbtd.setText(tableDongiabactiendien.getValueAt(selectedRow, 1).toString());
+        txtSodientoida_dgbtd.setText(tableDongiabactiendien.getValueAt(selectedRow, 2).toString());
+        txtGiaban_dgbtd.setText(tableDongiabactiendien.getValueAt(selectedRow, 3).toString());
+        
+    }//GEN-LAST:event_tableDongiabactiendienMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1107,11 +1205,11 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     private javax.swing.JButton btnXoa_qlcsd;
     private javax.swing.JButton btnXoa_qlmd;
     private javax.swing.JButton btnXoachu_qlcsd;
+    private javax.swing.JComboBox<String> cbbDoituong_qlcsd;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1119,7 +1217,6 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -1142,6 +1239,7 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1176,10 +1274,10 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     private javax.swing.JTextField txtMaKH_qlcsd;
     private javax.swing.JTextField txtMaKH_qlkh;
     private javax.swing.JTextField txtMaNCC_qlmd;
+    private javax.swing.JTextField txtMabac_qlbtd;
     private javax.swing.JTextField txtMacongto_qltb;
     private javax.swing.JTextField txtMakh_qltb;
     private javax.swing.JTextField txtMatKhau_qlkh;
-    private javax.swing.JTextField txtMathang_dgbtd;
     private javax.swing.JTextField txtMathang_qlcsd;
     private javax.swing.JTextField txtNgayDky_qlkh;
     private javax.swing.JTextField txtNgaylap_qltb;
