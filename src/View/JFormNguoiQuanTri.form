@@ -300,16 +300,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Th&#xea;m KH"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemKH_qlkhActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSuaKH_qlkh">
               <Properties>
                 <Property name="text" type="java.lang.String" value="S&#x1eed;a KH"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuaKH_qlkhActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnXoaKh_qlkh">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Xo&#xe1; KH"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaKh_qlkhActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnTimKh_qlkh">
               <Properties>

@@ -16,11 +16,14 @@ import SetTable.CustomTable_Quanlychisodien;
 import SetTable.CustomTable_Quanlykhachhang;
 import SetTable.CustomTable_Quanlymuadien;
 import SetTable.CustomTable_Quanlyno;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,14 +64,11 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     //hết function load dữ liệu vào tableQuanLyKH
     private void loadTableQuanlychisodien(){
         try{
-            
             listHD_qlcsd = qlcsdC.getList_Chisodien();
             tableQuanlychisodien.setModel(new CustomTable_Quanlychisodien(listHD_qlcsd));
-            
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
         }
-        
     }
     private  void loadTableNhaCCD(){
         tableNhaCCD.setModel(new CustomTable_Quanlymuadien(listNCC));
@@ -228,10 +228,25 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         jLabel11.setText("Mât khẩu:");
 
         btnThemKH_qlkh.setText("Thêm KH");
+        btnThemKH_qlkh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemKH_qlkhActionPerformed(evt);
+            }
+        });
 
         btnSuaKH_qlkh.setText("Sửa KH");
+        btnSuaKH_qlkh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaKH_qlkhActionPerformed(evt);
+            }
+        });
 
         btnXoaKh_qlkh.setText("Xoá KH");
+        btnXoaKh_qlkh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaKh_qlkhActionPerformed(evt);
+            }
+        });
 
         btnTimKh_qlkh.setText("Tìm KH");
         btnTimKh_qlkh.addActionListener(new java.awt.event.ActionListener() {
@@ -995,29 +1010,65 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
 
     private void btnTimKh_qlkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKh_qlkhActionPerformed
         // TODO add your handling code here:
+        ArrayList<NguoiDung> searchKH = new ArrayList<>();
+        try{
+             if(txtMaKH_qlkh.getText().isEmpty() )
+               throw new CustomException("Bạn cần nhập mã KH muốn tìm!");
+             listKhachhang = qlkhC.getList_qlkh();
+             int dem = 0;
+             for(NguoiDung nd : listKhachhang){
+                 if(txtMaKH_qlkh.getText().compareTo(nd.getMaNguoiDung()) == 0)
+                     dem++;
+             }
+             if(dem == 0)
+                 throw new CustomException("Không có khách hàng bạn muốn tìm!");
+             else{
+                    for(NguoiDung nd : listKhachhang){
+                       if(txtMaKH_qlkh.getText().compareTo(nd.getMaNguoiDung()) == 0)
+                       {
+                           searchKH.add(nd);
+                           break;
+                       }
+                    tableQuanLyKH.setModel(new CustomTable_Quanlykhachhang(searchKH));
+                }
+             }
+        }catch(CustomException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+       }
+       catch(SQLException ex){
+
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+       }
+       catch(Exception ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+       }
     }//GEN-LAST:event_btnTimKh_qlkhActionPerformed
 
     private void tableQuanLyKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableQuanLyKHMouseClicked
-//        int r = tableQuanLyKH.getSelectedRow();
-//        con_qlkh.getConnect();
-//        try{
-//            Statement stmt = con_qlkh.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,  
-//        ResultSet.CONCUR_UPDATABLE);
-//            rs = stmt.executeQuery("Select * from KHACHHANG");
-//            rs.absolute(r+1);
-//            txtMaKH_qlkh.setText(rs.getString(1));
-//            txtTenKH_qlkh.setText(rs.getString(2));
-//            txtDiachi_qlkh.setText(rs.getString(3));
-//            txtSoCMND_qlkh.setText(rs.getString(4));
-//            txtNgaySinh_qlkh.setText(rs.getString(5));
-//            txtSoDienThoai_qlkh.setText(rs.getString(6));
-//            txtNgayDky_qlkh.setText(rs.getString(7));
-//            txtTinhTrang_qlkh.setText(rs.getString(8));
-//            txtTenDangNhap_qlkh.setText(rs.getString(9));
-//            txtMatKhau_qlkh.setText(rs.getString(10));
-//        }catch(SQLException ex){
-//            Logger.getLogger(JFormKhachHang.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        int r = tableQuanLyKH.getSelectedRow();
+        txtMaKH_qlkh.setText(tableQuanLyKH.getValueAt(r, 0).toString());
+        txtTenKH_qlkh.setText(tableQuanLyKH.getValueAt(r,1).toString());
+        txtSoCMND_qlkh.setText(tableQuanLyKH.getValueAt(r,2).toString());
+        txtNgaySinh_qlkh.setText(tableQuanLyKH.getValueAt(r,3).toString());
+        txtDiachi_qlkh.setText(tableQuanLyKH.getValueAt(r,4).toString());
+        txtSoDienThoai_qlkh.setText(tableQuanLyKH.getValueAt(r,5).toString());
+        txtNgayDky_qlkh.setText(tableQuanLyKH.getValueAt(r,6).toString());
+        if(tableQuanLyKH.getValueAt(r,9).toString().compareTo("0") == 0){
+            txtLoaiTK_qlkh.setText("Khach Hang");
+        }
+        txtTenDangNhap_qlkh.setText(tableQuanLyKH.getValueAt(r,10).toString());
+        txtMatKhau_qlkh.setText(tableQuanLyKH.getValueAt(r,11).toString());
+        if(tableQuanLyKH.getValueAt(r,7).toString().compareTo("1") == 0){
+            cbbThanhToan_qlkh.setSelectedIndex(0);
+        }else cbbThanhToan_qlkh.setSelectedIndex(1);
+        
+        if(tableQuanLyKH.getValueAt(r,8).toString().compareTo("SH") == 0){
+            cbbLoaiDien_qlkh.setSelectedIndex(0);
+        }else {
+            if(tableQuanLyKH.getValueAt(r,8).toString().compareTo("KD") == 0){
+                cbbLoaiDien_qlkh.setSelectedIndex(1);
+            }
+        }
     }//GEN-LAST:event_tableQuanLyKHMouseClicked
 
     private void txtSoCMND_qlkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoCMND_qlkhActionPerformed
@@ -1186,7 +1237,123 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         txtGiaban_dgbtd.setText(tableDongiabactiendien.getValueAt(selectedRow, 3).toString());
         
     }//GEN-LAST:event_tableDongiabactiendienMouseClicked
+    // nút thêm khách hàng - hoàng đình an
+    private void btnThemKH_qlkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemKH_qlkhActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String ns = txtNgaySinh_qlkh.getText();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date txtNSAsDate = null;
+        String ngaydk = txtNgayDky_qlkh.getText();
+        java.util.Date txtNDKAsDate = null;
+        int tt;
+        String doituong;
+        if(cbbThanhToan_qlkh.getSelectedIndex() == 0){
+            tt = 1;
+        }else tt = 0;
+        if(cbbLoaiDien_qlkh.getSelectedIndex() == 0){
+            doituong = "SH";
+        }else doituong = "KD";
+        
+        try{
+           if(txtMaKH_qlkh.getText().isEmpty() || txtTenKH_qlkh.getText().isEmpty() || txtSoCMND_qlkh.getText().isEmpty() || txtNgaySinh_qlkh.getText().isEmpty() || txtSoDienThoai_qlkh.getText().isEmpty() || txtNgayDky_qlkh.getText().isEmpty() || txtTenDangNhap_qlkh.getText().isEmpty()|| txtMatKhau_qlkh.getText().isEmpty()|| txtLoaiTK_qlkh.getText().isEmpty()|| txtDiachi_qlkh.getText().isEmpty())
+               throw new CustomException("Bạn cần phải nhập đủ dữ liệu");
+           listKhachhang = qlkhC.getList_qlkh();
+           for(NguoiDung nd : listKhachhang){
+               if(txtTenDangNhap_qlkh.getText().compareTo(nd.getTaiKhoan().getUserName()) == 0 || txtSoCMND_qlkh.getText().compareTo(nd.getSoCMT()) == 0 || txtSoDienThoai_qlkh.getText().compareTo(nd.getSoDienThoai())==0)
+                   throw new CustomException("Tên đăng nhập, số CMND hoặc số ĐT bị trùng!");
+           }
+               txtNDKAsDate = sdf.parse(ngaydk);
+               txtNSAsDate = sdf.parse(ns);
+               sdf = new SimpleDateFormat("yyyy-MM-dd");
+               java.sql.Date dateNS = java.sql.Date.valueOf(sdf.format(txtNSAsDate));
+               java.sql.Date dateNDK = java.sql.Date.valueOf(sdf.format(txtNDKAsDate));
+           qlkhC.themKH(txtMaKH_qlkh.getText(), txtTenKH_qlkh.getText(), txtSoCMND_qlkh.getText(), dateNS, txtSoDienThoai_qlkh.getText(), dateNDK, tt, doituong, txtTenDangNhap_qlkh.getText(), txtMatKhau_qlkh.getText(), 0,txtDiachi_qlkh.getText() );
+           loadTableQuanlyKH();
+       
+       }catch(ParseException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex +"Bạn cần nhập đúng định dạng yyyy-MM-dd");
+       }
+        catch(CustomException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+       }
+       catch(SQLException ex){
+           if(ex.getMessage().contains("FK_HD_NGUOIDUNG")){
+               JOptionPane.showMessageDialog(null, "Mã khách hàng không tồn tại trong dữ liệu! Mời bạn kiểm tra lại!");
+           }
+           else if(ex.getMessage().contains("FK_HD_THANG")){
+               JOptionPane.showMessageDialog(null, "Mã tháng không tồn tại trong dữ liệu! Mời bạn kiểm tra lại!");
+           }
+           else if(ex.getMessage().contains("a unique or primary key constraint")){
+               JOptionPane.showMessageDialog(null, "Mã khách hàng đã tồn tại");
+           }
+           else{
+                JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
+           }
+       }
+       catch(Exception ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+       }
+    }//GEN-LAST:event_btnThemKH_qlkhActionPerformed
+    // hết nút thêm khách hàng - hoàng đình an
+    //nút xóa khách hàng - hoàng đình an
+    private void btnXoaKh_qlkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaKh_qlkhActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(txtMaKH_qlkh.getText().isEmpty())
+                throw new CustomException("Bạn cần nhập mã KH hoặc chọn một KH để xoá");
+            qlkhC.xoaKH(txtMaKH_qlkh.getText());
+            loadTableQuanlyKH();
+        }catch(CustomException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
+       }
+       catch(SQLException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
+       }
+       catch(Exception ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
+       }
+    }//GEN-LAST:event_btnXoaKh_qlkhActionPerformed
+    //hết nút xóa khách hàng - hoàng đình an
+    private void btnSuaKH_qlkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaKH_qlkhActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String ns = txtNgaySinh_qlkh.getText();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date txtNSAsDate = null;
+        String ngaydk = txtNgayDky_qlkh.getText();
+        java.util.Date txtNDKAsDate = null;
+        int tt;
+        String doituong;
+        if(cbbThanhToan_qlkh.getSelectedIndex() == 0){
+            tt = 1;
+        }else tt = 0;
+        if(cbbLoaiDien_qlkh.getSelectedIndex() == 0){
+            doituong = "SH";
+        }else doituong = "KD";
+        try{
+             if(txtMaKH_qlkh.getText().isEmpty() )
+               throw new CustomException("Bạn cần chọn một KH để sửa!");
+             txtNDKAsDate = sdf.parse(ngaydk);
+               txtNSAsDate = sdf.parse(ns);
+               sdf = new SimpleDateFormat("yyyy-MM-dd");
+               java.sql.Date dateNS = java.sql.Date.valueOf(sdf.format(txtNSAsDate));
+               java.sql.Date dateNDK = java.sql.Date.valueOf(sdf.format(txtNDKAsDate));
+             qlkhC.suaKH(txtMaKH_qlkh.getText(), txtTenKH_qlkh.getText(), txtSoCMND_qlkh.getText(), dateNS, txtSoDienThoai_qlkh.getText(), dateNDK, tt, doituong, txtTenDangNhap_qlkh.getText(), txtMatKhau_qlkh.getText(), 0,txtDiachi_qlkh.getText());
+             loadTableQuanlyKH();
+        }catch(CustomException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+       }
+       catch(SQLException ex){
 
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+       }
+       catch(Exception ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+       }
+    }//GEN-LAST:event_btnSuaKH_qlkhActionPerformed
+    
+     
     /**
      * @param args the command line arguments
      */
