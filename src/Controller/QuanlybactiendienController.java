@@ -21,7 +21,7 @@ public class QuanlybactiendienController {
         String sql = "select * from bactiendien order by sodientoithieu asc";
         ResultSet rs = conn.GetData(sql);
         while(rs.next()){
-            BacTienDien b = new BacTienDien(rs.getString("mabac"), rs.getInt("sodientoithieu"), rs.getInt("sodientoida"), rs.getFloat("giaban"), rs.getString("doituong"));
+            BacTienDien b = new BacTienDien(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getFloat(4), rs.getString(5));
             tempList.add(b);
         }
         return tempList;

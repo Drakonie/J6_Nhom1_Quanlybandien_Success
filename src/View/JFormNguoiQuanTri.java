@@ -400,13 +400,14 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel8)
-                                .addComponent(jLabel9)
-                                .addComponent(txtTenDangNhap_qlkh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtMatKhau_qlkh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cbbThanhToan_qlkh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel11))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9)
+                                    .addComponent(txtTenDangNhap_qlkh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbbThanhToan_qlkh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel11)))
                             .addGap(18, 18, 18))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addComponent(btnTimKh_qlkh)
@@ -646,6 +647,11 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         });
 
         btnTim_dgbtd.setText("Tìm kiếm");
+        btnTim_dgbtd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTim_dgbtdActionPerformed(evt);
+            }
+        });
 
         jLabel36.setText("Mã bậc");
 
@@ -1352,6 +1358,10 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
        }
     }//GEN-LAST:event_btnSuaKH_qlkhActionPerformed
+
+    private void btnTim_dgbtdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTim_dgbtdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTim_dgbtdActionPerformed
     
      
     /**
