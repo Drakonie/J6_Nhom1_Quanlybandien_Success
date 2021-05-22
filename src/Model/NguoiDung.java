@@ -53,7 +53,14 @@ public class NguoiDung {
         this.taiKhoan = taiKhoan;
         
     }
-
+    
+    public NguoiDung(String mand, String hoten, String diachi, int tt){
+        this.maNguoiDung = mand;
+        this.hoTen = hoten;
+        this.diaChi = diachi;
+        this.thanhToan = tt;
+    }
+    
     public String getMaNguoiDung() {
         return maNguoiDung;
     }

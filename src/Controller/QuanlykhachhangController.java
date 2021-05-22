@@ -11,9 +11,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import org.apache.derby.client.am.SqlException;
+
 /**
  *
  * @author Admin
@@ -26,7 +24,7 @@ public class QuanlykhachhangController {
     }
     public ArrayList<NguoiDung> getList_qlkh() throws SQLException{
         ArrayList<NguoiDung> tempList = new ArrayList<>();
-        String sql = "Select * from nguoidung";
+        String sql = "Select * from nguoidung where loaitk = "+0+"";
         ResultSet rs = conn.GetData(sql);
         while(rs.next()){
             NguoiDung nd = new NguoiDung();

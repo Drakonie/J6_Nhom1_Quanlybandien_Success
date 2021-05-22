@@ -5,6 +5,8 @@ package View;
 import Controller.QuanlybactiendienController;
 import Controller.QuanlychisodienController;
 import Controller.QuanlykhachhangController;
+import Controller.QuanlymuadienController;
+import Controller.QuanlynoController;
 import Model.BacTienDien;
 import Model.CustomException;
 import Model.HoaDon;
@@ -41,14 +43,17 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     QuanlychisodienController qlcsdC = new QuanlychisodienController();
     QuanlybactiendienController qlbtdC = new QuanlybactiendienController();
     QuanlykhachhangController qlkhC = new QuanlykhachhangController();
-
+    QuanlymuadienController qlmdC = new QuanlymuadienController();
+    QuanlynoController qlnC = new QuanlynoController();
     
-    public JFormNguoiQuanTri() {
+    public JFormNguoiQuanTri() throws SQLException {
         initComponents();
         setLocationRelativeTo(null);
         loadTableQuanlychisodien();
         loadTableQuanlybactiendien();
         loadTableQuanlyKH();
+        loadTableNhaCCD();
+        loadTableQuanlyno();
     }
 
     // function loadtable
@@ -70,7 +75,8 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
         }
     }
-    private  void loadTableNhaCCD(){
+    private  void loadTableNhaCCD() throws SQLException{
+        listNCC = qlmdC.getlist_ncc();
         tableNhaCCD.setModel(new CustomTable_Quanlymuadien(listNCC));
     }
     private void loadTableQuanlyno(){
@@ -88,6 +94,17 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dlgChonNCC = new javax.swing.JDialog();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        lblMaNCC_qlmd = new javax.swing.JLabel();
+        lblTenNCC_qlmd = new javax.swing.JLabel();
+        lblDiaChiNCC_qlmd = new javax.swing.JLabel();
+        lblDongia_qlmd = new javax.swing.JLabel();
+        btnOK_qlmd = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -197,6 +214,89 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         jLabel35 = new javax.swing.JLabel();
         txtMaHD_qlcsd = new javax.swing.JTextField();
         btnXoa_qlcsd = new javax.swing.JButton();
+
+        dlgChonNCC.setTitle("Chọn nhà cung cấp điện thành công");
+        dlgChonNCC.setMinimumSize(new java.awt.Dimension(500, 300));
+        dlgChonNCC.setModal(true);
+
+        jLabel38.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel38.setText("Thông tin chi tiết nhà cung cấp điện");
+
+        jLabel39.setText("Mã nhà cung cấp:");
+
+        jLabel40.setText("Tên nhà cung cấp:");
+
+        jLabel41.setText("Địa chỉ nhà cung cấp:");
+
+        jLabel42.setText("Đơn giá:");
+
+        lblMaNCC_qlmd.setText("jLabel38");
+
+        lblTenNCC_qlmd.setText("jLabel38");
+
+        lblDiaChiNCC_qlmd.setText("jLabel38");
+
+        lblDongia_qlmd.setText("jLabel38");
+
+        btnOK_qlmd.setText("OK");
+        btnOK_qlmd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOK_qlmdActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dlgChonNCCLayout = new javax.swing.GroupLayout(dlgChonNCC.getContentPane());
+        dlgChonNCC.getContentPane().setLayout(dlgChonNCCLayout);
+        dlgChonNCCLayout.setHorizontalGroup(
+            dlgChonNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlgChonNCCLayout.createSequentialGroup()
+                .addGroup(dlgChonNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dlgChonNCCLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabel38))
+                    .addGroup(dlgChonNCCLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addGroup(dlgChonNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnOK_qlmd)
+                            .addGroup(dlgChonNCCLayout.createSequentialGroup()
+                                .addGroup(dlgChonNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel39)
+                                    .addComponent(jLabel40)
+                                    .addComponent(jLabel41)
+                                    .addComponent(jLabel42))
+                                .addGap(31, 31, 31)
+                                .addGroup(dlgChonNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblDongia_qlmd)
+                                    .addComponent(lblDiaChiNCC_qlmd)
+                                    .addComponent(lblTenNCC_qlmd)
+                                    .addComponent(lblMaNCC_qlmd))))))
+                .addContainerGap(84, Short.MAX_VALUE))
+        );
+        dlgChonNCCLayout.setVerticalGroup(
+            dlgChonNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlgChonNCCLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel38)
+                .addGap(18, 18, 18)
+                .addGroup(dlgChonNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel39)
+                    .addComponent(lblMaNCC_qlmd))
+                .addGap(18, 18, 18)
+                .addGroup(dlgChonNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel40)
+                    .addComponent(lblTenNCC_qlmd))
+                .addGap(18, 18, 18)
+                .addGroup(dlgChonNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41)
+                    .addComponent(lblDiaChiNCC_qlmd))
+                .addGap(18, 18, 18)
+                .addGroup(dlgChonNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(lblDongia_qlmd))
+                .addGap(27, 27, 27)
+                .addComponent(btnOK_qlmd)
+                .addContainerGap(88, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -433,12 +533,32 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         jLabel26.setText("Địa chỉ NCC");
 
         btnThem_qlmd.setText("Thêm");
+        btnThem_qlmd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThem_qlmdActionPerformed(evt);
+            }
+        });
 
         btnSua_qlmd.setText("Sửa");
+        btnSua_qlmd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSua_qlmdActionPerformed(evt);
+            }
+        });
 
         btnXoa_qlmd.setText("Xoá");
+        btnXoa_qlmd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoa_qlmdActionPerformed(evt);
+            }
+        });
 
         btnMuaDien_qlmd.setText("Mua điện");
+        btnMuaDien_qlmd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMuaDien_qlmdActionPerformed(evt);
+            }
+        });
 
         tableNhaCCD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -451,6 +571,11 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableNhaCCD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableNhaCCDMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(tableNhaCCD);
 
         jLabel30.setText("Giá");
@@ -537,8 +662,18 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         jLabel27.setText("Tháng");
 
         btnXem_qln.setText("Xem");
+        btnXem_qln.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXem_qlnActionPerformed(evt);
+            }
+        });
 
         btnThanhtoan_qln.setText("Thanh Toán");
+        btnThanhtoan_qln.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThanhtoan_qlnActionPerformed(evt);
+            }
+        });
 
         tableQuanlyno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -551,6 +686,11 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableQuanlyno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableQuanlynoMouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(tableQuanlyno);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -1362,7 +1502,157 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     private void btnTim_dgbtdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTim_dgbtdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTim_dgbtdActionPerformed
-    
+
+    private void btnThem_qlmdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem_qlmdActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(txtMaNCC_qlmd.getText().isEmpty() || txtTenNCC_qlmd.getText().isEmpty() || txtDiachiNCC_qlmd.getText().isEmpty() || txtgia_qlmd.getText().isEmpty() )
+               throw new CustomException("Bạn cần phải nhập đủ dữ liệu");
+            listNCC = qlmdC.getlist_ncc();
+            for(NCC ncc : listNCC){
+                if(txtTenNCC_qlmd.getText().compareTo(ncc.getTenNCC()) == 0){
+                    throw new CustomException("Tên nhà cung cấp bị trùng !");
+                }
+            }
+            qlmdC.themNCC(txtMaNCC_qlmd.getText(), txtTenNCC_qlmd.getText(), txtDiachiNCC_qlmd.getText(), Integer.parseInt(txtgia_qlmd.getText()));
+            loadTableNhaCCD();
+       }catch(ParseException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex +"Bạn cần nhập đúng định dạng yyyy-MM-dd");
+       }
+        catch(CustomException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+       }
+       catch(SQLException ex){
+           if(ex.getMessage().contains("FK_HD_NGUOIDUNG")){
+               JOptionPane.showMessageDialog(null, "Mã khách hàng không tồn tại trong dữ liệu! Mời bạn kiểm tra lại!");
+           }
+           else if(ex.getMessage().contains("FK_HD_THANG")){
+               JOptionPane.showMessageDialog(null, "Mã tháng không tồn tại trong dữ liệu! Mời bạn kiểm tra lại!");
+           }
+           else if(ex.getMessage().contains("a unique or primary key constraint")){
+               JOptionPane.showMessageDialog(null, "Mã NCC đã tồn tại");
+           }
+           else{
+                JOptionPane.showMessageDialog(null, "Lỗi: " + ex.getMessage());
+           }
+       }
+       catch(Exception ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex+" Bạn cần nhập đơn giá kiểu số nguyên");
+       }
+    }//GEN-LAST:event_btnThem_qlmdActionPerformed
+
+    private void btnSua_qlmdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua_qlmdActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(txtMaNCC_qlmd.getText().isEmpty() )
+               throw new CustomException("Bạn cần chọn một NCC để sửa!");
+            qlmdC.suaNCC(txtMaNCC_qlmd.getText(), txtTenNCC_qlmd.getText(), txtDiachiNCC_qlmd.getText(), Integer.parseInt(txtgia_qlmd.getText()));
+            loadTableNhaCCD();
+        }catch(CustomException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+       }
+       catch(SQLException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+       }
+       catch(Exception ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex +" Bạn cần nhập đơn giá kiểu số nguyên");
+       }
+    }//GEN-LAST:event_btnSua_qlmdActionPerformed
+
+    private void btnXoa_qlmdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa_qlmdActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(txtMaNCC_qlmd.getText().isEmpty() )
+               throw new CustomException("Vui lòng chọn NCC muốn xóa!");
+            qlmdC.xoaNCC(txtMaNCC_qlmd.getText());
+            loadTableNhaCCD();
+        }catch(CustomException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+       }
+       catch(SQLException ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+       }
+       catch(Exception ex){
+           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
+       }
+    }//GEN-LAST:event_btnXoa_qlmdActionPerformed
+
+    private void btnMuaDien_qlmdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuaDien_qlmdActionPerformed
+        // TODO add your handling code here:
+        int r = tableNhaCCD.getSelectedRow();
+        try{
+            if(txtMaNCC_qlmd.getText().isEmpty())
+                throw new CustomException("Bạn cần chọn một nhà cung cấp!");
+            lblMaNCC_qlmd.setText(tableNhaCCD.getValueAt(r, 0).toString());
+            lblTenNCC_qlmd.setText(tableNhaCCD.getValueAt(r, 1).toString());
+            lblDiaChiNCC_qlmd.setText(tableNhaCCD.getValueAt(r, 2).toString());
+            lblDongia_qlmd.setText(tableNhaCCD.getValueAt(r, 3).toString());
+            dlgChonNCC.setLocationRelativeTo(null);
+            dlgChonNCC.setVisible(true);
+        }catch(CustomException ex){
+            JOptionPane.showMessageDialog(null,"Lỗi: " + ex);
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null,"Lỗi: " + ex);
+        }
+    }//GEN-LAST:event_btnMuaDien_qlmdActionPerformed
+
+    private void tableNhaCCDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableNhaCCDMouseClicked
+        // TODO add your handling code here:
+        int r = tableNhaCCD.getSelectedRow();
+        txtMaNCC_qlmd.setText(tableNhaCCD.getValueAt(r, 0).toString());
+        txtTenNCC_qlmd.setText(tableNhaCCD.getValueAt(r, 1).toString());
+        txtDiachiNCC_qlmd.setText(tableNhaCCD.getValueAt(r, 2).toString());
+        txtgia_qlmd.setText(tableNhaCCD.getValueAt(r, 3).toString());
+    }//GEN-LAST:event_tableNhaCCDMouseClicked
+
+    private void btnOK_qlmdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOK_qlmdActionPerformed
+        // TODO add your handling code here:
+        dlgChonNCC.setVisible(false);
+    }//GEN-LAST:event_btnOK_qlmdActionPerformed
+
+    private void btnXem_qlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXem_qlnActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(txtThang_qln.getText().isEmpty())
+                throw new CustomException("Bạn cần nhập mã tháng!");
+            if(qlnC.soSanh_mathang(Integer.parseInt(txtThang_qln.getText())) == 0)
+                throw new CustomException("Không có thông tin tương ứng với mã tháng trên! \n"
+                        + "Cú pháp tra mã tháng: năm+tháng. Ví dụ: 202102");
+            listKhachhang_No  = qlnC.getlist_qlno(Integer.parseInt(txtThang_qln.getText()));
+            loadTableQuanlyno();
+        }catch(CustomException ex){
+            JOptionPane.showMessageDialog(null,"Lỗi: "+ ex);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Lỗi: "+ ex);
+        }
+    }//GEN-LAST:event_btnXem_qlnActionPerformed
+
+    private void btnThanhtoan_qlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhtoan_qlnActionPerformed
+        // TODO add your handling code here:
+        try{
+            int r = tableQuanlyno.getSelectedRow();
+            String mand;
+            int tt;
+            mand = tableQuanlyno.getValueAt(r, 0).toString();
+            tt = Integer.parseInt(tableQuanlyno.getValueAt(r, 3).toString());
+            if(tt == 1)
+                throw new CustomException("Khách hàng đã thanh toán hóa đơn rồi!");
+            qlnC.updateTT(mand);
+            listKhachhang_No  = qlnC.getlist_qlno(Integer.parseInt(txtThang_qln.getText()));
+            loadTableQuanlyno();
+        }catch(CustomException ex){
+            JOptionPane.showMessageDialog(null,"Lỗi: "+ ex);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"Lỗi: "+ ex);
+        }
+    }//GEN-LAST:event_btnThanhtoan_qlnActionPerformed
+
+    private void tableQuanlynoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableQuanlynoMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_tableQuanlynoMouseClicked
+        
      
     /**
      * @param args the command line arguments
@@ -1394,13 +1684,18 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFormNguoiQuanTri().setVisible(true);
+                try {
+                    new JFormNguoiQuanTri().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFormNguoiQuanTri.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMuaDien_qlmd;
+    private javax.swing.JButton btnOK_qlmd;
     private javax.swing.JButton btnSuaKH_qlkh;
     private javax.swing.JButton btnSua_dgbtd;
     private javax.swing.JButton btnSua_qlcsd;
@@ -1422,6 +1717,7 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbbDoituong_qlcsd;
     private javax.swing.JComboBox<String> cbbLoaiDien_qlkh;
     private javax.swing.JComboBox<String> cbbThanhToan_qlkh;
+    private javax.swing.JDialog dlgChonNCC;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1456,7 +1752,12 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1475,6 +1776,10 @@ public class JFormNguoiQuanTri extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lblDiaChiNCC_qlmd;
+    private javax.swing.JLabel lblDongia_qlmd;
+    private javax.swing.JLabel lblMaNCC_qlmd;
+    private javax.swing.JLabel lblTenNCC_qlmd;
     private javax.swing.JTable tableDongiabactiendien;
     private javax.swing.JTable tableNhaCCD;
     private javax.swing.JTable tableQuanLyKH;
