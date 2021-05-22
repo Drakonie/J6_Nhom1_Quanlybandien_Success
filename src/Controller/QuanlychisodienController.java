@@ -55,34 +55,39 @@ public class QuanlychisodienController {
         String sql = "select * from bactiendien where doituong='"+loaidien+"' order by sodientoithieu ASC";
         ResultSet rs = conn.GetData(sql);
         ArrayList<BacTienDien> listBTD = new ArrayList<>();
+        int soDienTieuThu = soDienMoi - soDienCu;
         while(rs.next()){
             BacTienDien b = new BacTienDien(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getFloat(4), rs.getString(5));
             listBTD.add(b);
         }
-        float bac1 = listBTD.get(0).getGiaBan(), bac2 = listBTD.get(1).getGiaBan(), bac3 = listBTD.get(2).getGiaBan(), bac4 = listBTD.get(3).getGiaBan();
-        float bac5 = listBTD.get(4).getGiaBan(), bac6 = listBTD.get(5).getGiaBan();
-        
-        int muc1 = listBTD.get(0).getSoDienToiDa() - listBTD.get(0).getSoDienToiThieu(), muc2 = listBTD.get(1).getSoDienToiDa() - listBTD.get(1).getSoDienToiThieu() + 1, muc3 = listBTD.get(2).getSoDienToiDa() - listBTD.get(2).getSoDienToiThieu() + 1;
-        int muc4 = listBTD.get(3).getSoDienToiDa() - listBTD.get(3).getSoDienToiThieu() + 1, muc5 = listBTD.get(4).getSoDienToiDa() - listBTD.get(4).getSoDienToiThieu() + 1;
-        int muc6 = listBTD.get(5).getSoDienToiThieu()-1;
-        int soDienTieuThu = soDienMoi - soDienCu;
-        if(soDienTieuThu <= muc1){
-            return soDienTieuThu*bac1;
+        if(loaidien == "Sinh hoat"){
+            
+            float bac1 = listBTD.get(0).getGiaBan(), bac2 = listBTD.get(1).getGiaBan(), bac3 = listBTD.get(2).getGiaBan(), bac4 = listBTD.get(3).getGiaBan();
+            float bac5 = listBTD.get(4).getGiaBan(), bac6 = listBTD.get(5).getGiaBan();
+
+            int muc1 = listBTD.get(0).getSoDienToiDa() - listBTD.get(0).getSoDienToiThieu(), muc2 = listBTD.get(1).getSoDienToiDa() - listBTD.get(1).getSoDienToiThieu() + 1, muc3 = listBTD.get(2).getSoDienToiDa() - listBTD.get(2).getSoDienToiThieu() + 1;
+            int muc4 = listBTD.get(3).getSoDienToiDa() - listBTD.get(3).getSoDienToiThieu() + 1, muc5 = listBTD.get(4).getSoDienToiDa() - listBTD.get(4).getSoDienToiThieu() + 1;
+            int muc6 = listBTD.get(5).getSoDienToiThieu() - 1;
+            
+            if (soDienTieuThu <= muc1) {
+                return soDienTieuThu * bac1;
+            } else if (soDienTieuThu <= muc2) {
+                return muc1 * bac1 + (soDienTieuThu - muc1) * bac2;
+            } else if (soDienTieuThu <= muc3) {
+                return muc1 * bac1 + muc2 * bac2 + (soDienTieuThu - muc2 - muc1) * bac3;
+            } else if (soDienTieuThu <= muc4) {
+                return muc1 * bac1 + muc2 * bac2 + muc3 * bac3 + (soDienTieuThu - muc3 - muc2 - muc1) * bac4;
+            } else if (soDienTieuThu <= muc5) {
+                return muc1 * bac1 + muc2 * bac2 + muc3 * bac3 + muc4 * bac4 + (soDienTieuThu - muc4 - muc3 - muc2 - muc1) * bac5;
+            } else {
+                return muc1 * bac1 + muc2 * bac2 + muc3 * bac3 + muc4 * bac4 + muc5 * bac5 + (soDienTieuThu - muc5 - muc4 - muc3 - muc2 - muc1) * bac6;
+            }
         }
-        else if(soDienTieuThu <= muc2){
-            return muc1*bac1 + (soDienTieuThu-muc1)*bac2;
+        else if(loaidien == "Kinh doanh"){
+            float giadien = listBTD.get(0).getGiaBan();
+            return giadien*soDienTieuThu;
         }
-        else if(soDienTieuThu <= muc3){
-            return muc1*bac1 + muc2*bac2 + (soDienTieuThu - muc2 -muc1)*bac3;
-        }
-        else if(soDienTieuThu <= muc4){
-            return muc1*bac1 + muc2*bac2 + muc3*bac3 + (soDienTieuThu - muc3 -muc2- muc1)*bac4;
-        }
-        else if(soDienTieuThu <= muc5){
-            return muc1*bac1 + muc2*bac2 + muc3*bac3 + muc4*bac4 + (soDienTieuThu - muc4 - muc3 -muc2- muc1)*bac5;
-        }
-        else{
-            return muc1*bac1 + muc2*bac2 + muc3*bac3 + muc4*bac4 + muc5*bac5 + (soDienTieuThu - muc5 - muc4 - muc3 -muc2- muc1)* bac6;
-        }
+        else 
+            return 0;
     }
 }
