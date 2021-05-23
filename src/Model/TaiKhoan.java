@@ -48,5 +48,10 @@ public class TaiKhoan {
     public void setLoaiTK(String loaiTK) {
         this.loaiTK = loaiTK;
     }
+
+    @Override
+    public String toString() {
+        return "TaiKhoan{" + "userName=" + userName + ", passWord=" + passWord + ", loaiTK=" + loaiTK + '}';
+    }
     
 }

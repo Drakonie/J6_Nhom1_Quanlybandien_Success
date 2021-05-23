@@ -20,6 +20,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Vector;
 import java.util.logging.Level;
+import java.util.Iterator;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -57,7 +58,7 @@ public class JFormDangNhap extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnDangNhap = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
-        txtMatKhau = new javax.swing.JPasswordField();
+        txtMatKhau = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,8 +119,8 @@ public class JFormDangNhap extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtTendangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -146,46 +147,49 @@ public class JFormDangNhap extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-        // TODO add your handling code here:
-        String username = txtTendangnhap.getText();
-        String password = new String(txtMatKhau.getPassword());
-        try{
-            if(username.equals("") || password.equals("")) 
-               throw new CustomException("Vui lòng nhập đầy đủ thông tin!");
-            listTK = dnC.getlist_admin();
-            for(TaiKhoan tk : listTK){
-                if(username.equals(tk.getUserName()) && password.equals(tk.getPassWord()) && tk.getLoaiTK().equals("1")){
-//                    this.setVisible(false);
-//                    new JFormNguoiQuanTri().setVisible(true);
-                      JOptionPane.showMessageDialog(null,"Đúng rồi!");
-                }else{
-                    if(username.equals(tk.getUserName()) && password.equals(tk.getPassWord()) && tk.getLoaiTK().equals("0")){
-                        this.setVisible(false);
-                        new JFormKhachHang().setVisible(true);
-                    }
-                }
-            }
-        }catch(CustomException ex){
-           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
-       }
-       catch(SQLException ex){
-
-           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
-       }
-       catch(Exception ex){
-           JOptionPane.showMessageDialog(null, "Lỗi: " + ex);
-       }
-    }//GEN-LAST:event_btnDangNhapActionPerformed
-
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
         int ret=JOptionPane.showConfirmDialog(null,
-                "Bạn chắc chắn muốn thoát?", "Thoát",
-                JOptionPane.YES_NO_OPTION);
+            "Bạn chắc chắn muốn thoát?", "Thoát",
+            JOptionPane.YES_NO_OPTION);
         if(ret==JOptionPane.YES_OPTION)
-            System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_btnThoatActionPerformed
+
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        // TODO add your handling code here:
+        String username = txtTendangnhap.getText();
+        String password = txtMatKhau.getText();
+        try {
+            listTK = dnC.getlist_admin();
+        } catch (Exception ex) {
+            Logger.getLogger(JFormDangNhap.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Iterator<TaiKhoan> lst = listTK.iterator();
+        while(lst.hasNext()){
+            TaiKhoan tk = lst.next();
+            if(password.equals(tk.getPassWord()) && username.equals(tk.getUserName()) && tk.getLoaiTK().compareTo("1") == 0){
+                this.setVisible(false);
+                try {
+                    new JFormNguoiQuanTri().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFormDangNhap.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                if(password.equals(tk.getPassWord()) && username.equals(tk.getUserName()) && tk.getLoaiTK().compareTo("0") == 0){
+                    this.setVisible(false);
+                    new JFormKhachHang().setVisible(true);
+                }
+            }    
+        }
+        int dem = 0;
+        for(TaiKhoan tk : listTK){
+            if(password.equals(tk.getPassWord()) && username.equals(tk.getUserName()))
+                dem++;
+        }
+        if(dem == 0)
+            JOptionPane.showMessageDialog(null,"Tên đăng nhập hoặc mật khẩu không đúng!");
+    }//GEN-LAST:event_btnDangNhapActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,7 +233,7 @@ public class JFormDangNhap extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField txtMatKhau;
+    private javax.swing.JTextField txtMatKhau;
     private javax.swing.JTextField txtTendangnhap;
     // End of variables declaration//GEN-END:variables
 }

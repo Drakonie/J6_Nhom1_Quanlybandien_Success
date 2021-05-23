@@ -26,11 +26,10 @@ public class DangnhapController {
         ArrayList<TaiKhoan> templist = new ArrayList<>();
         ResultSet rs = conn.GetData(sql);
         while(rs.next()){
-            String tendn, mk,loaitk;
-            tendn = rs.getString("USERNAME");       
-            mk = rs.getString("PASSWORD");
-            loaitk = rs.getString("LOAITK");
-            TaiKhoan tk = new TaiKhoan(tendn, mk, loaitk);
+            TaiKhoan tk = new TaiKhoan();
+            tk.setUserName(rs.getString("USERNAME"));
+            tk.setPassWord(rs.getString("PASSWORD"));
+            tk.setLoaiTK(rs.getString("LOAITK"));
             templist.add(tk);
         }
         return templist;
