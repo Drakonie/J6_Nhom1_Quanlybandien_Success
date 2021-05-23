@@ -90,4 +90,101 @@ public class QuanlychisodienController {
         else 
             return 0;
     }
+    
+    //find by mahd
+    public ArrayList<HoaDon> findByMahd(String mahd) throws SQLException{
+        ArrayList<HoaDon> tempList = new ArrayList<>();
+        String sql = "select * from hoadon inner join nguoidung on hoadon.manguoidung = nguoidung.manguoidung inner join thang on hoadon.mathang = thang.mathang where mahd='"+mahd+"' order by mahd asc";
+        ResultSet rs = conn.GetData(sql);
+        while(rs.next()){
+            //String maHD, NguoiDung nguoiDung, Thang thang, int soDienDau, int soDienCuoi
+            
+            
+            //String maNguoiDung, String hoTen, String soCMT, String ngaySinh, String diaChi, String soDienThoai,
+            //String ngayDangKy, int thanhToan, String doiTuong, ThietBi thietBi, TaiKhoan taiKhoan
+            TaiKhoan tk = new TaiKhoan(rs.getString("username"), rs.getString("password"), rs.getString("loaiTK"));
+            NguoiDung nguoiDung = new NguoiDung(rs.getString("manguoidung"), rs.getString("hoten"),rs.getString("socmt"), rs.getDate("ngaySinh").toString(), rs.getString("diachi"), rs.getString("sodt"), rs.getString("ngaydk"), rs.getInt("thanhtoan"), rs.getString("doituong"), null, tk);
+            Thang thang = new Thang(rs.getString("mathang"));
+            HoaDon hd = new HoaDon(rs.getString("mahd"), nguoiDung, thang, rs.getInt("sodiendau"), rs.getInt("sodiencuoi"));
+            tempList.add(hd);
+        }
+        return tempList;
+        
+    }
+    //find by makh
+    public ArrayList<HoaDon> findByMakh(String makh) throws SQLException{
+        ArrayList<HoaDon> tempList = new ArrayList<>();
+        String sql = "select * from hoadon inner join nguoidung on hoadon.manguoidung = nguoidung.manguoidung inner join thang on hoadon.mathang = thang.mathang where hoadon.manguoidung='"+makh+"' order by mahd asc";
+        ResultSet rs = conn.GetData(sql);
+        while(rs.next()){
+            //String maHD, NguoiDung nguoiDung, Thang thang, int soDienDau, int soDienCuoi
+            
+            
+            //String maNguoiDung, String hoTen, String soCMT, String ngaySinh, String diaChi, String soDienThoai,
+            //String ngayDangKy, int thanhToan, String doiTuong, ThietBi thietBi, TaiKhoan taiKhoan
+            TaiKhoan tk = new TaiKhoan(rs.getString("username"), rs.getString("password"), rs.getString("loaiTK"));
+            NguoiDung nguoiDung = new NguoiDung(rs.getString("manguoidung"), rs.getString("hoten"),rs.getString("socmt"), rs.getDate("ngaySinh").toString(), rs.getString("diachi"), rs.getString("sodt"), rs.getString("ngaydk"), rs.getInt("thanhtoan"), rs.getString("doituong"), null, tk);
+            Thang thang = new Thang(rs.getString("mathang"));
+            HoaDon hd = new HoaDon(rs.getString("mahd"), nguoiDung, thang, rs.getInt("sodiendau"), rs.getInt("sodiencuoi"));
+            tempList.add(hd);
+        }
+        return tempList;
+    }
+    
+    //Find by mathang
+    public ArrayList<HoaDon> findByMathang(String mathang) throws SQLException{
+        ArrayList<HoaDon> tempList = new ArrayList<>();
+        String sql = "select * from hoadon inner join nguoidung on hoadon.manguoidung = nguoidung.manguoidung inner join thang on hoadon.mathang = thang.mathang where hoadon.mathang="+mathang+" order by mahd asc";
+        ResultSet rs = conn.GetData(sql);
+        while(rs.next()){
+            //String maHD, NguoiDung nguoiDung, Thang thang, int soDienDau, int soDienCuoi
+            
+            
+            //String maNguoiDung, String hoTen, String soCMT, String ngaySinh, String diaChi, String soDienThoai,
+            //String ngayDangKy, int thanhToan, String doiTuong, ThietBi thietBi, TaiKhoan taiKhoan
+            TaiKhoan tk = new TaiKhoan(rs.getString("username"), rs.getString("password"), rs.getString("loaiTK"));
+            NguoiDung nguoiDung = new NguoiDung(rs.getString("manguoidung"), rs.getString("hoten"),rs.getString("socmt"), rs.getDate("ngaySinh").toString(), rs.getString("diachi"), rs.getString("sodt"), rs.getString("ngaydk"), rs.getInt("thanhtoan"), rs.getString("doituong"), null, tk);
+            Thang thang = new Thang(rs.getString("mathang"));
+            HoaDon hd = new HoaDon(rs.getString("mahd"), nguoiDung, thang, rs.getInt("sodiendau"), rs.getInt("sodiencuoi"));
+            tempList.add(hd);
+        }
+        return tempList;
+    }
+    
+    public ArrayList<HoaDon> findByMakh_MaThang(String makh, int mathang) throws SQLException{
+        ArrayList<HoaDon> tempList = new ArrayList<>();
+        String sql = "select * from hoadon inner join nguoidung on hoadon.manguoidung = nguoidung.manguoidung inner join thang on hoadon.mathang = thang.mathang where hoadon.manguoidung='"+makh+"' and hoadon.mathang="+mathang+" order by mahd asc";
+        ResultSet rs = conn.GetData(sql);
+        while(rs.next()){
+            //String maHD, NguoiDung nguoiDung, Thang thang, int soDienDau, int soDienCuoi
+            
+            
+            //String maNguoiDung, String hoTen, String soCMT, String ngaySinh, String diaChi, String soDienThoai,
+            //String ngayDangKy, int thanhToan, String doiTuong, ThietBi thietBi, TaiKhoan taiKhoan
+            TaiKhoan tk = new TaiKhoan(rs.getString("username"), rs.getString("password"), rs.getString("loaiTK"));
+            NguoiDung nguoiDung = new NguoiDung(rs.getString("manguoidung"), rs.getString("hoten"),rs.getString("socmt"), rs.getDate("ngaySinh").toString(), rs.getString("diachi"), rs.getString("sodt"), rs.getString("ngaydk"), rs.getInt("thanhtoan"), rs.getString("doituong"), null, tk);
+            Thang thang = new Thang(rs.getString("mathang"));
+            HoaDon hd = new HoaDon(rs.getString("mahd"), nguoiDung, thang, rs.getInt("sodiendau"), rs.getInt("sodiencuoi"));
+            tempList.add(hd);
+        }
+        return tempList;
+    }
+    public ArrayList<HoaDon> findByMakh_Mahd_MaThang(String makh, String mahd, int mathang) throws SQLException{
+        ArrayList<HoaDon> tempList = new ArrayList<>();
+        String sql = "select * from hoadon inner join nguoidung on hoadon.manguoidung = nguoidung.manguoidung inner join thang on hoadon.mathang = thang.mathang where hoadon.manguoidung='"+makh+"' and mahd='"+mahd+"' and hoadon.mathang="+mathang+" order by mahd asc";
+        ResultSet rs = conn.GetData(sql);
+        while(rs.next()){
+            //String maHD, NguoiDung nguoiDung, Thang thang, int soDienDau, int soDienCuoi
+            
+            
+            //String maNguoiDung, String hoTen, String soCMT, String ngaySinh, String diaChi, String soDienThoai,
+            //String ngayDangKy, int thanhToan, String doiTuong, ThietBi thietBi, TaiKhoan taiKhoan
+            TaiKhoan tk = new TaiKhoan(rs.getString("username"), rs.getString("password"), rs.getString("loaiTK"));
+            NguoiDung nguoiDung = new NguoiDung(rs.getString("manguoidung"), rs.getString("hoten"),rs.getString("socmt"), rs.getDate("ngaySinh").toString(), rs.getString("diachi"), rs.getString("sodt"), rs.getString("ngaydk"), rs.getInt("thanhtoan"), rs.getString("doituong"), null, tk);
+            Thang thang = new Thang(rs.getString("mathang"));
+            HoaDon hd = new HoaDon(rs.getString("mahd"), nguoiDung, thang, rs.getInt("sodiendau"), rs.getInt("sodiencuoi"));
+            tempList.add(hd);
+        }
+        return tempList;
+    }
 }

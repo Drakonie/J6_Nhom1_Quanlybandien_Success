@@ -39,4 +39,37 @@ public class QuanlybactiendienController {
         String sql = "delete from bactiendien where doituong='"+doituong+"' and mabac='"+mabac+"'";
         conn.executeNonQuery(sql);
     }
+    
+    
+    public ArrayList<BacTienDien> findByMaBac(String mabac) throws SQLException{
+        ArrayList<BacTienDien> tempList = new ArrayList<>();
+        String sql = "select * from BacTienDien where mabac='"+mabac+"'";
+        ResultSet rs = conn.GetData(sql);
+        while(rs.next()){
+            BacTienDien b = new BacTienDien(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getFloat(4), rs.getString(5));
+            tempList.add(b);
+        }
+        return tempList;
+    }
+    public ArrayList<BacTienDien> findByDOiTuong(String doituong) throws SQLException{
+        ArrayList<BacTienDien> tempList = new ArrayList<>();
+        String sql = "select * from BacTienDien where doituong='"+doituong+"'";
+        ResultSet rs = conn.GetData(sql);
+        while(rs.next()){
+            BacTienDien b = new BacTienDien(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getFloat(4), rs.getString(5));
+            tempList.add(b);
+        }
+        return tempList;
+    }
+    
+    public ArrayList<BacTienDien> findByMaBac_DoiTuong(String maBac, String doituong) throws SQLException{
+        ArrayList<BacTienDien> tempList = new ArrayList<>();
+        String sql = "select * from BacTienDien where mabac='"+maBac+"' and doituong='"+doituong+"'";
+        ResultSet rs = conn.GetData(sql);
+        while(rs.next()){
+            BacTienDien b = new BacTienDien(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getFloat(4), rs.getString(5));
+            tempList.add(b);
+        }
+        return tempList;
+    }
 }

@@ -105,6 +105,14 @@ public class NguoiDung {
         return taiKhoan;
     }
 
+    public ThietBi getThietBi() {
+        return thietBi;
+    }
+
+    public void setThietBi(ThietBi thietBi) {
+        this.thietBi = thietBi;
+    }
+
 
 
     public void setMaNguoiDung(String maNguoiDung) {
