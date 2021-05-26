@@ -130,9 +130,26 @@ public class QuanlychisodienController {
         }
         return tempList;
     }
-    
+    public ArrayList<HoaDon> findByMakhForthemThangTiepTheo(String makh) throws SQLException{
+        ArrayList<HoaDon> tempList = new ArrayList<>();
+        String sql = "select * from hoadon inner join nguoidung on hoadon.manguoidung = nguoidung.manguoidung inner join thang on hoadon.mathang = thang.mathang where hoadon.manguoidung='"+makh+"' order by hoadon.mathang asc";
+        ResultSet rs = conn.GetData(sql);
+        while(rs.next()){
+            //String maHD, NguoiDung nguoiDung, Thang thang, int soDienDau, int soDienCuoi
+            
+            
+            //String maNguoiDung, String hoTen, String soCMT, String ngaySinh, String diaChi, String soDienThoai,
+            //String ngayDangKy, int thanhToan, String doiTuong, ThietBi thietBi, TaiKhoan taiKhoan
+            TaiKhoan tk = new TaiKhoan(rs.getString("username"), rs.getString("password"), rs.getString("loaiTK"));
+            NguoiDung nguoiDung = new NguoiDung(rs.getString("manguoidung"), rs.getString("hoten"),rs.getString("socmt"), rs.getDate("ngaySinh").toString(), rs.getString("diachi"), rs.getString("sodt"), rs.getString("ngaydk"), rs.getInt("thanhtoan"), rs.getString("doituong"), null, tk);
+            Thang thang = new Thang(rs.getString("mathang"));
+            HoaDon hd = new HoaDon(rs.getString("mahd"), nguoiDung, thang, rs.getInt("sodiendau"), rs.getInt("sodiencuoi"));
+            tempList.add(hd);
+        }
+        return tempList;
+    }
     //Find by mathang
-    public ArrayList<HoaDon> findByMathang(String mathang) throws SQLException{
+    public ArrayList<HoaDon> findByMathang(int mathang) throws SQLException{
         ArrayList<HoaDon> tempList = new ArrayList<>();
         String sql = "select * from hoadon inner join nguoidung on hoadon.manguoidung = nguoidung.manguoidung inner join thang on hoadon.mathang = thang.mathang where hoadon.mathang="+mathang+" order by mahd asc";
         ResultSet rs = conn.GetData(sql);
@@ -187,4 +204,5 @@ public class QuanlychisodienController {
         }
         return tempList;
     }
+    
 }
